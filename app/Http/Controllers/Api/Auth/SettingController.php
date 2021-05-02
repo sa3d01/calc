@@ -36,18 +36,11 @@ class SettingController extends MasterController
 
     public function uploadImage(UploadImageRequest $request): object
     {
-        if ($request['type'] == 'avatar') {
-            $user = auth('api')->user();
-            $user->update([
-                'image' => $request->file('image')
-            ]);
-            $image = $user->image;
-        } else {
-            $file = $request->file('image');
-            $filename = Str::random(10) . '.' . $file->getClientOriginalExtension();
-            $file->move('media/images/', $request['type'] . '/' . $filename);
-            $image = asset('media/images/') . '/' . $request['type'] . '/' . $filename;
-        }
+        $user = auth('api')->user();
+        $user->update([
+            'image' => $request->file('image')
+        ]);
+        $image = $user->image;
         return $this->sendResponse([
             "image" => $image
         ]);

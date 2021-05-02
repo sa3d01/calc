@@ -22,7 +22,6 @@ class UploadImageRequest extends ApiMasterRequest
     public function rules()
     {
         return [
-            'type' => 'required|in:avatar',
             'image' => 'required|image',
         ];
     }
