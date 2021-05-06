@@ -19,6 +19,8 @@ class DatabaseSeeder extends Seeder
             SliderSeeder::class,
             ContactTypeSeeder::class,
             UserSeeder::class,
+            FormulaNutrientsClassificationsSeeder::class,
+            ClinicalStatusSeeder::class
         ]);
     }
 }

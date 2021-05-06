@@ -62,6 +62,23 @@ Route::group([
                 Route::get('/{id}', 'NotificationController@show');
             });
         });
+        // TubeFeedingFormula
+        Route::group(['namespace' => 'TubeFeedingFormula', 'prefix' => 'tube-feeding-formula'], function () {
+            Route::get('classifications', 'DropDownController@formulaNutrientsClassifications');
+            Route::get('classifications/{id}/tube-feeding', 'DropDownController@tubeFeedings');
+            Route::post('single-calc', 'TubeFeedingFormulaController@singleCalc');
+            Route::post('twice-calc', 'TubeFeedingFormulaController@twiceCalc');
+        });
+        //CaloriesIntake
+        Route::group(['namespace' => 'CaloriesIntake', 'prefix' => 'calories-intake'], function () {
+            Route::get('clinical-status', 'CaloriesIntakeController@ClinicalStatus');
+            Route::post('healthy-calc', 'CaloriesIntakeController@healthyCalc');
+            Route::post('hospitalized-calc', 'CaloriesIntakeController@hospitalizedCalc');
+        });
+        //IdealBodyWeight
+        Route::group(['namespace' => 'IdealBodyWeight', 'prefix' => 'ideal-body-weight'], function () {
+            Route::post('calc', 'IdealBodyWeightController@calc');
+        });
     });
 
 
