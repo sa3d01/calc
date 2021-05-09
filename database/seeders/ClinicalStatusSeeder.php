@@ -14,21 +14,55 @@ class ClinicalStatusSeeder extends Seeder
      */
     public function run()
     {
-        DropDown::create([
-            'class'=>'ClinicalStatus',
-            'name'=>'Fever',
-        ]);
+        //1-1.2
         DropDown::create([
             'class'=>'ClinicalStatus',
             'name'=>'elective surgery',
         ]);
+        //1.2-1.6
         DropDown::create([
             'class'=>'ClinicalStatus',
             'name'=>'multiple trauma',
         ]);
+        //1.2-1.6
         DropDown::create([
             'class'=>'ClinicalStatus',
             'name'=>'severe infection',
+        ]);
+        //1.1-1.3
+        DropDown::create([
+            'class'=>'ClinicalStatus',
+            'name'=>'Multiple /long done fractures',
+        ]);
+        //1.3-1.5
+        DropDown::create([
+            'class'=>'ClinicalStatus',
+            'name'=>'Infection with trauma',
+        ]);
+        //1.2-1.4
+        DropDown::create([
+            'class'=>'ClinicalStatus',
+            'name'=>'Sepsis',
+        ]);
+        //1.3
+        DropDown::create([
+            'class'=>'ClinicalStatus',
+            'name'=>'Closed head injury',
+        ]);
+        //1.1-1.45
+        DropDown::create([
+            'class'=>'ClinicalStatus',
+            'name'=>'Cancer',
+        ]);
+        //1-2.5
+        DropDown::create([
+            'class'=>'ClinicalStatus',
+            'name'=>'Burns',
+        ]);
+        //2.4
+        DropDown::create([
+            'class'=>'ClinicalStatus',
+            'name'=>'Fever',
         ]);
 
     }

@@ -17,30 +17,42 @@ class IdealBodyWeightController extends MasterController
     {
         parent::__construct();
     }
-    function BMI($request)
+    function BMI($weight,$height)
     {
-        return round($request['weight']/$request['height'],2);
+        return ($weight/$height)*2;
     }
-    function weightStatus($BMI):string
+    function weightStatus($bmi):string
     {
-        if ($BMI<18.5){
+        if ($bmi<18.5){
             return 'UnderWeight';
-        }elseif ($BMI<24.9){
+        }elseif ($bmi<24.9){
             return 'Healthy Weight';
-        }elseif ($BMI<29.9){
+        }elseif ($bmi<29.9){
             return 'OverWeight';
         }else{
             return 'Obese';
         }
     }
-    public function calc(IdealBodyWeightRequest $request): object
+    public function calc(IdealBodyWeightRequest $request)
     {
         $request->validated();
-        $BMI=$this->BMI($request);
-        $arr['Status'] = $this->weightStatus($BMI);
-        $arr['BMI'] = $BMI;
-        $arr['ABW'] = 58;
-        $arr['IBW'] = 60;
+        if ($request['height']>5){
+            $height=(integer)$request['height']/100;
+        }else{
+            $height=(integer)$request['height'];
+        }
+        $weight=(integer)$request['weight'];
+        $bmi=$this->BMI($weight,$height);
+        $arr['Status'] = $this->weightStatus($bmi);
+        $arr['BMI'] = $bmi;
+        if ($request['gender']=='male'){
+            $ibw=round(24*($height*2),2);
+        }else{
+            $ibw=round(22*($height*2),2);
+        }
+        $arr['IBW'] = $ibw;
+        $arr['ABW'] = $weight;
+        $arr['AjBW'] = (($weight - $ibw) * 0.25) + $ibw;
         return $this->sendResponse($arr);
     }
 }
