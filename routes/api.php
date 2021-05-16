@@ -41,6 +41,8 @@ Route::group([
     Route::group(['namespace' => 'Home', 'prefix' => 'home'], function () {
         Route::get('slider', 'SliderController@index');
     });
+    Route::get('contact-types', 'ContactController@contactTypes');
+
     //Authed end points
     Route::group([
         'middleware' => JwtTokenIsValid::class,
@@ -49,9 +51,7 @@ Route::group([
         Route::group([
             'namespace' => 'Contact'
         ], function () {
-            Route::get('contact-types', 'ContactController@contactTypes');
             Route::post('contact', 'ContactController@store');
-
         });
         //Notification
         Route::group([
