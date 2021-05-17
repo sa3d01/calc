@@ -79,6 +79,18 @@ Route::group([
         Route::group(['namespace' => 'IdealBodyWeight', 'prefix' => 'ideal-body-weight'], function () {
             Route::post('calc', 'IdealBodyWeightController@calc');
         });
+        //LaboratoryTest
+        Route::group(['namespace' => 'LaboratoryTest', 'prefix' => 'laboratory-tests'], function () {
+            Route::get('types', 'LaboratoryTestController@types');
+            Route::get('types/{id}/factor', 'LaboratoryTestController@factors');
+            Route::post('calc', 'LaboratoryTestController@calc');
+        });
+        //LaboratoryTest
+        Route::group(['namespace' => 'NutrientFactor', 'prefix' => 'nutrient-factors'], function () {
+            Route::get('nutrient', 'NutrientFactorController@nutrients');
+            Route::get('nutrient/{id}/drug', 'NutrientFactorController@drugs');
+            Route::post('calc', 'NutrientFactorController@calc');
+        });
     });
 
 

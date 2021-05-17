@@ -54,32 +54,49 @@ class TubeFeedingFormulaController extends MasterController
     public function twiceCalc(Request $request):object
     {
         $validator = Validator::make($request->all(),[
-            'first_classification_id'=>'required|exists:drop_downs,id',
-            'second_classification_id'=>'required|exists:drop_downs,id',
-            'first_tube_feeding_id'=>'required|exists:drop_downs,id',
-            'second_tube_feeding_id'=>'required|exists:drop_downs,id',
-            'first_quantity'=>'nullable',
-            'second_quantity'=>'nullable',
+            'classification_id'=>'required|exists:drop_downs,id',
+            'tube_feeding_id'=>'required|exists:drop_downs,id',
+            'quantity'=>'required',
         ]);
         if ($validator->fails()) {
             return $this->sendError($validator->errors()->first());
         }
         $tube_feeding_1=DropDown::find($request['tube_feeding_id'][0]);
         $tube_feeding_2=DropDown::find($request['tube_feeding_id'][1]);
-        $arr_1['Dietary Fiber']=10;
-        $arr_1['Calcium']=5;
-        $arr_1['Fat']=.25;
-        $arr_1['Magnesium']=25;
-        $arr_1['Potassium']=12;
-        $arr_1['Vitamin C']=7;
-        $data[$tube_feeding_1->name][]=$arr_1;
-        $arr_2['Dietary Fiber']=10;
-        $arr_2['Calcium']=5;
-        $arr_2['Fat']=.25;
-        $arr_2['Magnesium']=25;
-        $arr_2['Potassium']=12;
-        $arr_2['Vitamin C']=7;
-        $data[$tube_feeding_2->name][]=$arr_2;
+
+        $formula_nutrient_1=FormulaNutrient::where('tube_feeding_id',$tube_feeding_1->id)->first();
+        $formula_nutrient_2=FormulaNutrient::where('tube_feeding_id',$tube_feeding_2->id)->first();
+        if (!$formula_nutrient_1 || !$formula_nutrient_2){
+            return $this->sendError('no data');
+        }
+        if ($request['quantity']){
+            if (($request['quantity'][0] % $formula_nutrient_1->volume != 0) || ($request['quantity'][1] % $formula_nutrient_2->volume != 0))
+            {
+                return $this->sendError('quantity must be '.$formula_nutrient_1->volume.' or multiple of');
+            }
+        }
+        $arr_1['K.cal']=$formula_nutrient_1->k_cal;
+        $arr_1['CHO g']=$formula_nutrient_1->cho_g;
+        $arr_1['Protein g']=$formula_nutrient_1->protein_g;
+        $arr_1['Fat g']=$formula_nutrient_1->fat_g;
+        $arr_1['Na mg']=$formula_nutrient_1->na_mg;
+        $arr_1['K mg']=$formula_nutrient_1->k_mg;
+        $arr_1['P mg']=$formula_nutrient_1->p_mg;
+        $arr_1['Fiber g']=$formula_nutrient_1->fiber_g;
+        $arr_1['Water mL']=$formula_nutrient_1->water_mL;
+        $arr_1['mOsm']=$formula_nutrient_1->mosm;
+        $data[$tube_feeding_1->name]=$arr_1;
+        $arr_2['K.cal']=$formula_nutrient_2->k_cal;
+        $arr_2['CHO g']=$formula_nutrient_2->cho_g;
+        $arr_2['Protein g']=$formula_nutrient_2->protein_g;
+        $arr_2['Fat g']=$formula_nutrient_2->fat_g;
+        $arr_2['Na mg']=$formula_nutrient_2->na_mg;
+        $arr_2['K mg']=$formula_nutrient_2->k_mg;
+        $arr_2['P mg']=$formula_nutrient_2->p_mg;
+        $arr_2['Fiber g']=$formula_nutrient_2->fiber_g;
+        $arr_2['Water mL']=$formula_nutrient_2->water_mL;
+        $arr_2['mOsm']=$formula_nutrient_2->mosm;
+        $data[$tube_feeding_2->name]=$arr_2;
         return $this->sendResponse($data);
     }
 

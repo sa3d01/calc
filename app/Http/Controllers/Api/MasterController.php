@@ -30,7 +30,7 @@ abstract class MasterController extends Controller
     public function sendError($error,$data=[], $code = 200)
     {
         $response = [
-            'status' => $code,
+            'status' => 400,
             'message' => $error,
             'data' => $data,
         ];

@@ -17,17 +17,17 @@ class ClinicalStatusSeeder extends Seeder
         //1-1.2
         DropDown::create([
             'class'=>'ClinicalStatus',
-            'name'=>'elective surgery',
+            'name'=>'Elective surgery',
         ]);
         //1.2-1.6
         DropDown::create([
             'class'=>'ClinicalStatus',
-            'name'=>'multiple trauma',
+            'name'=>'Multiple trauma',
         ]);
         //1.2-1.6
         DropDown::create([
             'class'=>'ClinicalStatus',
-            'name'=>'severe infection',
+            'name'=>'Severe infection',
         ]);
         //1.1-1.3
         DropDown::create([

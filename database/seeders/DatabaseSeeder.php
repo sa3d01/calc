@@ -20,7 +20,10 @@ class DatabaseSeeder extends Seeder
             ContactTypeSeeder::class,
             UserSeeder::class,
             FormulaNutrientsClassificationsSeeder::class,
-            ClinicalStatusSeeder::class
+            ClinicalStatusSeeder::class,
+            LapTestSeeder::class,
+            NutrientsSeeder::class,
+            ResourceSeeder::class
         ]);
     }
 }
