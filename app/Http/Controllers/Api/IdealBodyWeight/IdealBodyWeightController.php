@@ -19,7 +19,7 @@ class IdealBodyWeightController extends MasterController
     }
     function BMI($weight,$height)
     {
-        return ($weight/$height)*2;
+        return $weight/($height*$height);
     }
     function weightStatus($bmi):string
     {
@@ -46,9 +46,9 @@ class IdealBodyWeightController extends MasterController
         $arr['Status'] = $this->weightStatus($bmi);
         $arr['BMI'] = $bmi;
         if ($request['gender']=='male'){
-            $ibw=round(24*($height*2),2);
+            $ibw=24*($height*$height);
         }else{
-            $ibw=round(22*($height*2),2);
+            $ibw=22*($height*$height);
         }
         $arr['IBW'] = $ibw;
         $arr['ABW'] = $weight;

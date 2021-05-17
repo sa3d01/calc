@@ -41,7 +41,7 @@ Route::group([
     Route::group(['namespace' => 'Home', 'prefix' => 'home'], function () {
         Route::get('slider', 'SliderController@index');
     });
-    Route::get('contact-types', 'ContactController@contactTypes');
+    Route::get('contact-types', 'Contact\ContactController@contactTypes');
 
     //Authed end points
     Route::group([

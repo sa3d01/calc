@@ -6,9 +6,12 @@ use App\Http\Controllers\Api\MasterController;
 use App\Http\Requests\Api\Auth\LoginRequest;
 use App\Http\Resources\UserLoginResourse;
 use App\Models\User;
+use App\Traits\UserEmailVerificationTrait;
 
 class LoginController extends MasterController
 {
+    use UserEmailVerificationTrait;
+
     public function login(LoginRequest $request): object
     {
         $credentials = $request->only('email', 'password');
@@ -17,6 +20,7 @@ class LoginController extends MasterController
             return $this->sendError('هذا الحساب غير موجود.');
         }
         if (!$user->email_verified_at) {
+            $this->createEmailVerificationCodeForUser($user);
             return $this->sendError('هذا الحساب غير مفعل.', ['email_verified' => false]);
         }
         if (auth('api')->attempt($credentials)) {
