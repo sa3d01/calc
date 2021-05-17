@@ -21,7 +21,13 @@ class LoginController extends MasterController
         }
         if (!$user->email_verified_at) {
             $this->createEmailVerificationCodeForUser($user);
-            return $this->sendResponse('هذا الحساب غير مفعل.', ['email_verified' => false]);
+//            return $this->sendResponse('هذا الحساب غير مفعل.', ['email_verified' => false]);
+            $response = [
+                'status' => 200,
+                'message' => 'unverified',
+                'data' => ['email_verified' => false],
+            ];
+            return response()->json($response);
         }
         if (auth('api')->attempt($credentials)) {
             return $this->sendResponse(new UserLoginResourse($user));
