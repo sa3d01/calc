@@ -18,4 +18,8 @@ class DropDown extends Model
         'image',
         'parent_id',
     ];
+    public function parent():object
+    {
+        return $this->belongsTo(DropDown::class,'parent_id','id');
+    }
 }

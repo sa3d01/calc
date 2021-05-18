@@ -29,29 +29,29 @@
             </a>
         </li>
 
-        <li>
-            <a href="javascript: void(0);">
-                <i class="mdi mdi-share-variant"></i>
-                <span> المحتوى الطبى </span>
-                <span class="menu-arrow"></span>
-            </a>
-            <ul class="nav-second-level nav" aria-expanded="false">
-                <li>
-                    <a href="javascript: void(0);" aria-expanded="false">Formula Content Of Nutrients
-                        <span class="menu-arrow"></span>
-                    </a>
-                    <ul class="nav-third-level nav" aria-expanded="false">
-                        <li>
-                            <a href="{{route('admin.formula_content.classifications')}}">classifications</a>
-                        </li>
-                        <li>
-                            <a href="{{route('admin.formula_content.formula_nutrients')}}">tube feeding formula</a>
-                        </li>
+{{--        <li>--}}
+{{--            <a href="javascript: void(0);">--}}
+{{--                <i class="mdi mdi-share-variant"></i>--}}
+{{--                <span> المحتوى الطبى </span>--}}
+{{--                <span class="menu-arrow"></span>--}}
+{{--            </a>--}}
+{{--            <ul class="nav-second-level nav" aria-expanded="false">--}}
+{{--                <li>--}}
+{{--                    <a href="javascript: void(0);" aria-expanded="false">Formula Content Of Nutrients--}}
+{{--                        <span class="menu-arrow"></span>--}}
+{{--                    </a>--}}
+{{--                    <ul class="nav-third-level nav" aria-expanded="false">--}}
+{{--                        <li>--}}
+{{--                            <a href="{{route('admin.formula_content.classifications')}}">classifications</a>--}}
+{{--                        </li>--}}
+{{--                        <li>--}}
+{{--                            <a href="{{route('admin.formula_content.formula_nutrients')}}">tube feeding formula</a>--}}
+{{--                        </li>--}}
 
-                    </ul>
-                </li>
-            </ul>
-        </li>
+{{--                    </ul>--}}
+{{--                </li>--}}
+{{--            </ul>--}}
+{{--        </li>--}}
 
         <li>
             <a href="javascript: void(0);">

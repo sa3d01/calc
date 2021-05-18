@@ -12,11 +12,14 @@
             <div class="row">
                 <div class="col-12">
                     <div class="card-box">
+                        <a href="#">
+                            <button type="button" class="btn btn-block btn-sm btn-success waves-effect waves-light">إضافة +</button>
+                        </a>
                         <table id="datatable-buttons" class="table table-striped table-bordered dt-responsive nowrap">
                             <thead>
                             <tr>
                                 <th>name</th>
-                                <th>tube feeding formula count</th>
+                                <th>classification</th>
                                 <th>status</th>
                                 <th>العمليات المتاحة</th>
                             </tr>
@@ -25,7 +28,7 @@
                             @foreach($rows as $row)
                                 <tr>
                                     <td>{{$row->name}}</td>
-                                    <td>{{\App\Models\DropDown::where('parent_id',$row->id)->count()}}</td>
+                                    <td>{{$row->parent->name}}</td>
                                     <td>
                                         <span class="badge @if($row->status==1) badge-success @else badge-danger @endif">
                                             {{$row->status==1?'مفعل':'غير مفعل'}}

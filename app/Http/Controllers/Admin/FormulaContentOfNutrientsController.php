@@ -18,11 +18,6 @@ class FormulaContentOfNutrientsController extends MasterController
         $rows = $this->model->where('class','FormulaNutrientsClassification')->latest()->get();
         return view('Dashboard.formula_classifications.index', compact('rows'));
     }
-    public function show($id):object
-    {
-        $row=$this->model->find($id);
-        return view('Dashboard.formula_classifications.show', compact('row'));
-    }
     public function ban($id):object
     {
         $user=$this->model->find($id);
@@ -44,6 +39,12 @@ class FormulaContentOfNutrientsController extends MasterController
         );
         $row->refresh();
         return redirect()->back()->with('updated');
+    }
+
+    public function formula_nutrients()
+    {
+        $rows = $this->model->where('class','FormulaNutrients')->latest()->get();
+        return view('Dashboard.formula_classifications.formula_nutrients', compact('rows'));
     }
 
 }
