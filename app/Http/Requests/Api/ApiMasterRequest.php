@@ -22,7 +22,7 @@ class ApiMasterRequest extends FormRequest
                 throw new HttpResponseException(response()->json([
                     'status' => 400,
                     'message' => $phone->errorMsg()
-                ], 400));
+                ], 200));
             }
             $this->merge(['phone' => $phone->getNormalized()]);
         }
@@ -33,6 +33,6 @@ class ApiMasterRequest extends FormRequest
         throw new HttpResponseException(response()->json([
             'status' => 400,
             'message' => $validator->errors()->first()
-        ], 400));
+        ], 200));
     }
 }
