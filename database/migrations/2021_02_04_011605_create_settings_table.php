@@ -15,11 +15,9 @@ class CreateSettingsTable extends Migration
     {
         Schema::create('settings', function (Blueprint $table) {
             $table->id();
-            //minutes
-            $table->integer('verify_period')->default(3);
-            $table->integer('app_tax')->default(1);
-            $table->integer('free_products_count')->default(1);
-            $table->integer('add_product_price')->default(1);
+            $table->string('mobile')->nullable();
+            $table->string('email')->nullable();
+            $table->json('socials')->nullable();
             $table->timestamps();
         });
     }

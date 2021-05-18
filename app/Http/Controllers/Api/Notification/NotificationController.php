@@ -20,8 +20,8 @@ class NotificationController extends MasterController
 
     public function index():object
     {
-        $notifies = new NotificationCollection($this->model->where('receiver_id', request()->user()->id)->latest()->get());
-        $unread = $this->model->where('receiver_id', request()->user()->id)->where('read', 'false')->count();
+        $notifies = new NotificationCollection($this->model->where('receiver_id', request()->user()->id)->orWhereJsonContains('receivers',auth()->id())->latest()->get());
+        $unread = $this->model->where('receiver_id', request()->user()->id)->orWhereJsonContains('receivers',auth()->id())->where('read', 'false')->count();
         return $this->sendResponse(['data' => $notifies, 'unread' => $unread]);
     }
 
