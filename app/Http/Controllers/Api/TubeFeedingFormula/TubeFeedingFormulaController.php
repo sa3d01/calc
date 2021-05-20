@@ -39,6 +39,7 @@ class TubeFeedingFormulaController extends MasterController
                 return $this->sendError('quantity must be '.$formula_nutrient->volume.' or multiple of');
             }
         }
+        $arr['name']=$formula_nutrient->tubeFeeding->name;
         $arr['K.cal']=$formula_nutrient->k_cal;
         $arr['CHO g']=$formula_nutrient->cho_g;
         $arr['Protein g']=$formula_nutrient->protein_g;
@@ -75,6 +76,7 @@ class TubeFeedingFormulaController extends MasterController
                 return $this->sendError('quantity must be '.$formula_nutrient_1->volume.' or multiple of');
             }
         }
+        $arr_1['name']=$tube_feeding_1->name;
         $arr_1['K.cal']=$formula_nutrient_1->k_cal;
         $arr_1['CHO g']=$formula_nutrient_1->cho_g;
         $arr_1['Protein g']=$formula_nutrient_1->protein_g;
@@ -85,7 +87,8 @@ class TubeFeedingFormulaController extends MasterController
         $arr_1['Fiber g']=$formula_nutrient_1->fiber_g;
         $arr_1['Water mL']=$formula_nutrient_1->water_mL;
         $arr_1['mOsm']=$formula_nutrient_1->mosm;
-        $data[$tube_feeding_1->name]=$arr_1;
+        $data[]=$arr_1;
+        $arr_2['name']=$tube_feeding_2->name;
         $arr_2['K.cal']=$formula_nutrient_2->k_cal;
         $arr_2['CHO g']=$formula_nutrient_2->cho_g;
         $arr_2['Protein g']=$formula_nutrient_2->protein_g;
@@ -96,7 +99,7 @@ class TubeFeedingFormulaController extends MasterController
         $arr_2['Fiber g']=$formula_nutrient_2->fiber_g;
         $arr_2['Water mL']=$formula_nutrient_2->water_mL;
         $arr_2['mOsm']=$formula_nutrient_2->mosm;
-        $data[$tube_feeding_2->name]=$arr_2;
+        $data[]=$arr_2;
         return $this->sendResponse($data);
     }
 

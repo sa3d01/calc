@@ -22,4 +22,8 @@ class FormulaNutrient extends Model
         'water_mL',
         'mosm',
     ];
+    public function tubeFeeding():object
+    {
+        return $this->belongsTo(DropDown::class,'tube_feeding_id','id');
+    }
 }
