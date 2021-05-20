@@ -4,7 +4,7 @@
         <div class="card-box widget-user">
             <div>
                 <div class="avatar-lg float-left mr-3">
-                    <img style="max-height: 150px" src="{{$user->image}}" class="img-fluid rounded-circle" alt="user">
+                    <img style="max-height: 100%;max-width: 100%" src="{{$user->image}}" class="img-fluid rounded-circle" alt="user">
                 </div>
                 <div class="wid-u-info">
                     <h5 class="mt-0">{{$user->name}}</h5>
