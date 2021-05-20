@@ -35,6 +35,7 @@ Route::prefix('/admin')->name('admin.')->namespace('App\Http\Controllers\Admin')
     Route::resource('user', 'UserController');
     Route::post('user/{id}/ban', 'UserController@ban')->name('user.ban');
     Route::post('user/{id}/activate', 'UserController@activate')->name('user.activate');
+    Route::post('notification/{id}','NotificationController@sendSingleNotification')->name('notification.send-single-notification');
     Route::resource('notification', 'NotificationController');
     Route::resource('contact', 'ContactController');
     Route::resource('contact_type', 'ContactTypeController');

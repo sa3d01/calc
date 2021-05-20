@@ -1,26 +1,55 @@
 <div class="row">
     <div class="col-xl-12">
         <div class="card-box">
-            <div class="dropdown float-right">
-                <a href="#" class="dropdown-toggle arrow-none card-drop" data-toggle="dropdown" aria-expanded="false">
-                    <i class="mdi mdi-dots-vertical"></i>
-                </a>
-                <div class="dropdown-menu dropdown-menu-right">
-                    <a href="{{route('admin.contact.index')}}" class="dropdown-item">المزيد</a>
-                </div>
-            </div>
+{{--            <div class="dropdown float-right">--}}
+{{--                <a href="#" class="dropdown-toggle arrow-none card-drop" data-toggle="dropdown" aria-expanded="false">--}}
+{{--                    <i class="mdi mdi-dots-vertical"></i>--}}
+{{--                </a>--}}
+{{--                <div class="dropdown-menu dropdown-menu-right">--}}
+{{--                    <a href="{{route('admin.contact.index')}}" class="dropdown-item">المزيد</a>--}}
+{{--                </div>--}}
+{{--            </div>--}}
             <h4 class="header-title mb-3">رسائل تواصل الأعضاء</h4>
             <div class="inbox-widget">
                 @foreach(\App\Models\Contact::all() as $contact)
                     <div class="inbox-item">
-                    <a href="#">
-                        <div class="inbox-item-img"><img style="height: 40px;width: 40px" src="{{$contact->user->image}}" class="rounded-circle" alt="{{$contact->user->name}}"></div>
-                        <h5 class="inbox-item-author mt-0 mb-1">{{$contact->user->name}}</h5>
-                        <p class="inbox-item-text">{{\Illuminate\Support\Str::limit($contact->message,100)}}</p>
-                        <p class="inbox-item-date">{{\Carbon\Carbon::parse($contact->created_at)->diffForHumans()}}</p>
-                    </a>
-                </div>
+                        <a  style='cursor: pointer' data-toggle='modal' data-target='#sendMessageModal-{{$contact->id}}'>
+                            <div class="inbox-item-img"><img style="height: 100%;width: 100%" src="{{$contact->user->image}}" class="rounded-circle" alt="{{$contact->user->name}}"></div>
+                            <h5 class="inbox-item-author mt-0 mb-1">{{$contact->user->name}}</h5>
+                            <p class="inbox-item-text">{{\Illuminate\Support\Str::limit($contact->message,100)}}</p>
+                            <p class="inbox-item-date">{{\Carbon\Carbon::parse($contact->created_at)->diffForHumans()}}</p>
+                        </a>
+                    </div>
+                    <div class="modal fade" id="sendMessageModal-{{$contact->id}}" tabindex="-1" role="dialog" aria-labelledby="sendMessageModal" aria-hidden="true">
+                        <div class="modal-dialog" role="document">
+                            <div class="modal-content">
+                                <div class="modal-header text-center">
+                                    <h5 class="modal-title w-100 font-weight-bold">قم بإرسالة خاصة الى هذا المستخدم</h5>
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                                <div class="modal-allbody mx-3">
+                                    <form enctype="multipart/form-data" method="POST" action="{{ route('admin.notification.send-single-notification',$contact->id) }}">
+                                        @csrf
+                                        <div class="md-form mb-5">
+                                            <textarea required class="form-control" name="note"></textarea>
+                                        </div>
+                                        <div class="form-group">
+                                            <div class="col-md-8 offset-md-4">
+                                                <button type="submit" class="btn btn-primary">
+                                                    إرسال
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
                 @endforeach
+
             </div>
         </div>
     </div><!-- end col -->

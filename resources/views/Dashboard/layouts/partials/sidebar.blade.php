@@ -22,12 +22,12 @@
             </a>
         </li>
 
-        <li>
-            <a href="{{route('admin.contact.index')}}">
-                <i class="mdi mdi-mailbox"></i>
-                <span> إدارة رسائل التواصل </span>
-            </a>
-        </li>
+{{--        <li>--}}
+{{--            <a href="{{route('admin.contact.index')}}">--}}
+{{--                <i class="mdi mdi-mailbox"></i>--}}
+{{--                <span> إدارة رسائل التواصل </span>--}}
+{{--            </a>--}}
+{{--        </li>--}}
 
 {{--        <li>--}}
 {{--            <a href="javascript: void(0);">--}}

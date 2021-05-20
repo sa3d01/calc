@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Models\Category;
+use App\Models\Contact;
 use App\Models\Notification;
 use App\Models\User;
 use Edujugon\PushNotification\PushNotification;
@@ -69,6 +70,33 @@ class NotificationController extends MasterController
         $this->model->create([
             'receivers'=>$usersIds,
             'admin_notify_type'=>'all',
+            'title'=>$data['title'],
+            'note'=>$data['note'],
+        ]);
+        return redirect()->back()->with('success','تم الارسال بنجاح');
+    }
+
+    public function sendSingleNotification($id,Request $request)
+    {
+        $contact=Contact::find($id);
+        $data['title']='admin message';
+        $data['note']=$request['note'];
+        $push = new PushNotification('fcm');
+        $push->setMessage([
+            'notification' => array('title'=>$data['note'], 'sound' => 'default'),
+            'data' => [
+                'title' => $data['note'],
+                'body' => $data['note'],
+                'status' => 'admin',
+                'type'=>'admin',
+            ],
+            'priority' => 'high',
+        ])
+            ->setDevicesToken($contact->user->device['id'])
+            ->send();
+        $this->model->create([
+            'receiver_id'=>$contact->user_id,
+            'admin_notify_type'=>'single',
             'title'=>$data['title'],
             'note'=>$data['note'],
         ]);

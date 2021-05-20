@@ -1,8 +1,8 @@
 <!-- Topbar Start -->
 <div class="navbar-custom">
-    <ul class="list-unstyled topnav-menu float-right mb-0">
-        @include('Dashboard.layouts.partials.notifications')
-    </ul>
+{{--    <ul class="list-unstyled topnav-menu float-right mb-0">--}}
+{{--        @include('Dashboard.layouts.partials.notifications')--}}
+{{--    </ul>--}}
     <div class="logo-box">
         <a href="{{route('admin.home')}}" class="logo text-center">
             <span class="logo-lg">

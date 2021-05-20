@@ -1,5 +1,5 @@
 <div class="row">
-    @foreach(\App\Models\User::whereType('USER')->get() as $user)
+    @foreach(\App\Models\User::whereType('USER')->latest()->take(8)->get() as $user)
     <div class="col-xl-3 col-md-6">
         <div class="card-box widget-user">
             <div>
