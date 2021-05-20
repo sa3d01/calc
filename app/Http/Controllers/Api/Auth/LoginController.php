@@ -29,6 +29,13 @@ class LoginController extends MasterController
             return response()->json($response);
         }
         if (auth('api')->attempt($credentials)) {
+            if ($user->banned==1){
+                $response = [
+                    'status' => 401,
+                    'message' => 'تم حظرك من قبل إدارة التطبيق ..',
+                ];
+                return response()->json($response, 401);
+            }
             return $this->sendResponse(new UserLoginResourse($user));
         }
         return $this->sendError('كلمة المرور غير صحيحة.');
