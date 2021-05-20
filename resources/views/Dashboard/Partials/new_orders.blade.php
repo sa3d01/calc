@@ -11,7 +11,7 @@
             </div>
             <h4 class="header-title mb-3">رسائل تواصل الأعضاء</h4>
             <div class="inbox-widget">
-                @foreach(\App\Models\Contact::where('read',false)->get() as $contact)
+                @foreach(\App\Models\Contact::all() as $contact)
                     <div class="inbox-item">
                     <a href="#">
                         <div class="inbox-item-img"><img style="height: 40px;width: 40px" src="{{$contact->user->image}}" class="rounded-circle" alt="{{$contact->user->name}}"></div>
