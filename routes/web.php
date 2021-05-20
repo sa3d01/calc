@@ -46,6 +46,8 @@ Route::prefix('/admin')->name('admin.')->namespace('App\Http\Controllers\Admin')
     Route::get('page/{type}/{for}', 'PageController@page')->name('page.edit');
     Route::put('page/{id}', 'PageController@update')->name('page.update');
 
+    Route::resource('city', 'CityController');
+
     Route::get('/formula-content-classifications', 'FormulaContentOfNutrientsController@classifications')->name('formula_content.classifications');
     Route::post('/formula-content-classifications/{id}/ban', 'FormulaContentOfNutrientsController@ban')->name('formula_content.ban_classification');
     Route::post('/formula-content-classifications/{id}/activate', 'FormulaContentOfNutrientsController@activate')->name('formula_content.activate_classification');

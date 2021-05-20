@@ -80,6 +80,9 @@
                 <li>
                     <a href="{{route('admin.slider.index')}}">الإعلانات</a>
                 </li>
+                <li>
+                    <a href="{{route('admin.city.index')}}">المدن</a>
+                </li>
             </ul>
         </li>
     </ul>
