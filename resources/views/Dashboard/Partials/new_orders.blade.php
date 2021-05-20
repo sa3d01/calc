@@ -16,7 +16,7 @@
                         <a  style='cursor: pointer' data-toggle='modal' data-target='#sendMessageModal-{{$contact->id}}'>
                             <div class="inbox-item-img"><img style="height: 100%;width: 100%" src="{{$contact->user->image}}" class="rounded-circle" alt="{{$contact->user->name}}"></div>
                             <h5 class="inbox-item-author mt-0 mb-1">{{$contact->user->name}}</h5>
-                            <p class="inbox-item-text">{{\Illuminate\Support\Str::limit($contact->message,100)}}</p>
+                            <p class="inbox-item-text">{{$contact->message}}</p>
                             <p class="inbox-item-date">{{\Carbon\Carbon::parse($contact->created_at)->diffForHumans()}}</p>
                         </a>
                     </div>
