@@ -24,7 +24,7 @@ class IdealBodyWeightRequest extends ApiMasterRequest
         return [
             'weight'=>'required|numeric',
             'height'=>'required|numeric',
-            'gender'=>'required|in:male,female',
+            'gender'=>'nullable|in:male,female',
         ];
     }
 }

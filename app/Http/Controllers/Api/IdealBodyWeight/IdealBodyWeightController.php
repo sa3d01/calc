@@ -47,8 +47,10 @@ class IdealBodyWeightController extends MasterController
         $arr['BMI'] = $bmi;
         if ($request['gender']=='male'){
             $ibw=24*($height*$height);
-        }else{
+        }elseif ($request['gender']=='female'){
             $ibw=22*($height*$height);
+        }else{
+            $ibw=0;
         }
         $arr['IBW'] = $ibw;
         $arr['AjBW'] = $weight;
