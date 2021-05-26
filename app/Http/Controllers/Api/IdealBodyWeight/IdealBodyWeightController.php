@@ -51,8 +51,8 @@ class IdealBodyWeightController extends MasterController
             $ibw=22*($height*$height);
         }
         $arr['IBW'] = $ibw;
-        $arr['ABW'] = $weight;
-        $arr['AjBW'] = (($weight - $ibw) * 0.25) + $ibw;
+        $arr['AjBW'] = $weight;
+        $arr['ABW'] = (($weight - $ibw) * 0.25) + $ibw;
         return $this->sendResponse($arr);
     }
 }
