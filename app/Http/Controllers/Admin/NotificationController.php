@@ -70,8 +70,8 @@ class NotificationController extends MasterController
         $this->model->create([
             'receivers'=>$usersIds,
             'admin_notify_type'=>'all',
-            'title'=>$data['title'] .' :'.$data['note'],
-            'note'=>$data['title'] .' :'.$data['note'],
+            'title'=>$data['note'],
+            'note'=>$data['note'],
         ]);
         return redirect()->back()->with('success','تم الارسال بنجاح');
     }
@@ -97,8 +97,8 @@ class NotificationController extends MasterController
         $this->model->create([
             'receiver_id'=>$contact->user_id,
             'admin_notify_type'=>'single',
-            'title'=>$data['title'] .' :'.$data['note'],
-            'note'=>$data['title'] .' :'.$data['note'],
+            'title'=>$data['note'],
+            'note'=>$data['note'],
         ]);
         return redirect()->back()->with('success','تم الارسال بنجاح');
     }
