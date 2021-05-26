@@ -45,16 +45,19 @@ class IdealBodyWeightController extends MasterController
         $bmi=$this->BMI($weight,$height);
         $arr['Status'] = $this->weightStatus($bmi);
         $arr['BMI'] = $bmi;
+        $arr['ABW'] = $weight;
         if ($request['gender']=='male'){
             $ibw=24*($height*$height);
+            $arr['IBW'] = $ibw;
+            $arr['AjBW'] = (($weight - $ibw) * 0.25) + $ibw;
         }elseif ($request['gender']=='female'){
             $ibw=22*($height*$height);
+            $arr['IBW'] = $ibw;
+            $arr['AjBW'] = (($weight - $ibw) * 0.25) + $ibw;
         }else{
-            $ibw=1;
+            $arr['IBW'] = 0;
+            $arr['AjBW'] = 0;
         }
-        $arr['IBW'] = $ibw;
-        $arr['AjBW'] = $weight;
-        $arr['ABW'] = (($weight - $ibw) * 0.25) + $ibw;
         return $this->sendResponse($arr);
     }
 }
