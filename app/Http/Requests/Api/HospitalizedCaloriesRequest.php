@@ -26,7 +26,7 @@ class HospitalizedCaloriesRequest extends ApiMasterRequest
             'height'=>'required|numeric',
             'age'=>'required|numeric',
             'gender'=>'required|in:male,female',
-            'activity_factor'=>'required|in:OverWeight,Obese,UnderWeight,Normal,Out Of Bed',
+            'activity_factor'=>'nullable|in:OverWeight,Obese,UnderWeight,Normal,Out Of Bed',
             'clinical_status_id' => 'required|numeric|exists:drop_downs,id',
             'stress_factor' => 'nullable|numeric',
 

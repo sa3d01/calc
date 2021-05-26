@@ -26,7 +26,7 @@ class HealthyCaloriesRequest extends ApiMasterRequest
             'height'=>'required|numeric',
             'age'=>'required|numeric',
             'gender'=>'required|in:male,female',
-            'activity_factor'=>'required|in:Sedentary,Lightly Active,Moderately Active,Extremely Active,Very Active',
+            'activity_factor'=>'nullable|in:Sedentary,Lightly Active,Moderately Active,Extremely Active,Very Active',
         ];
     }
 }

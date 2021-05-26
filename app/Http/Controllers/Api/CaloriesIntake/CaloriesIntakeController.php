@@ -75,9 +75,13 @@ class CaloriesIntakeController extends MasterController
         }else{
             $bmr=$this->BMRForWomen($weight,$height,$age);
         }
-        $total_energy=$this->TotalEnergyForHealthy($request['activity_factor'],$bmr);
         $arr['BMR'] = $bmr;
-        $arr['Total'] = $total_energy;
+        if ($request['activity_factor']){
+            $total_energy=$this->TotalEnergyForHealthy($request['activity_factor'],$bmr);
+            $arr['Total'] = $total_energy;
+        }else{
+            $arr['Total'] = 0;
+        }
         return $this->sendResponse($arr);
     }
 
