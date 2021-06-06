@@ -37,7 +37,7 @@ class ContactController extends MasterController
         $data['user_id'] = auth('api')->id();
         $contact=Contact::create($data);
         $this->notifyAdmin($contact);
-        return $this->sendResponse([], " تم الارسال بنجاح .. يرجى انتظار رد الإدارة");
+        return $this->sendResponse([], "successful sent");
     }
 
     function notifyAdmin($contact)
