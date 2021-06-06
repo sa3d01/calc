@@ -127,7 +127,7 @@ class CaloriesIntakeController extends MasterController
                 $stress_factor=1;
             }
 
-            $arr['Total'] = $total_energy*$stress_factor;
+            $arr['Total'] =round($total_energy*$stress_factor,2);
         }else{
             $arr['Total'] = 0;
         }
