@@ -71,6 +71,9 @@
                         <li>
                             <a href="{{route('admin.page.edit',['type'=>'terms','for'=>'all'])}}">الشروط والأحكام للمستخدم</a>
                         </li>
+                        <li>
+                            <a href="{{route('admin.social.edit')}}">روابط مواقع التواصل</a>
+                        </li>
 
                     </ul>
                 </li>

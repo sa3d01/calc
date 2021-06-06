@@ -44,6 +44,8 @@ Route::prefix('/admin')->name('admin.')->namespace('App\Http\Controllers\Admin')
     Route::resource('slider', 'SliderController');
     Route::post('slider/{id}/ban', 'SliderController@ban')->name('slider.ban');
     Route::post('slider/{id}/activate', 'SliderController@activate')->name('slider.activate');
+    Route::get('social', 'SocialController@social')->name('social.edit');
+    Route::post('social', 'SocialController@updateSocial')->name('social.updateSocial');
     Route::get('page/{type}/{for}', 'PageController@page')->name('page.edit');
     Route::put('page/{id}', 'PageController@update')->name('page.update');
 
