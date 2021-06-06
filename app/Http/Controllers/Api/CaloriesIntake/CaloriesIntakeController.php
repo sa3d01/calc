@@ -99,29 +99,34 @@ class CaloriesIntakeController extends MasterController
         }
         if ($request['activity_factor']){
             $total_energy=$this->TotalEnergyForHospitalized($request['activity_factor'],$bmr);
-            $clinical_status=DropDown::find($request['clinical_status_id']);
-            $stress_factor=$request['stress_factor'];
-            if (!$request->has('stress_factor')){
-                if ($clinical_status->name=='elective surgery'){
-                    $stress_factor=rand(1,1.2);
-                }elseif ($clinical_status=='multiple trauma' || $clinical_status=='severe infection'){
-                    $stress_factor=rand(1.2,1.6);
-                }elseif ($clinical_status=='Multiple /long done fractures'){
-                    $stress_factor=rand(1.1,1.3);
-                }elseif ($clinical_status=='Infection with trauma'){
-                    $stress_factor=rand(1.3,1.5);
-                }elseif ($clinical_status=='Sepsis'){
-                    $stress_factor=rand(1.2,1.4);
-                }elseif ($clinical_status=='Closed head injury'){
-                    $stress_factor=1.3;
-                }elseif ($clinical_status=='Cancer'){
-                    $stress_factor=rand(1.1,1.45);
-                }elseif ($clinical_status=='Burns'){
-                    $stress_factor=rand(1,2.5);
-                }else{
-                    $stress_factor=2.4;
+            if ($request['clinical_status_id']){
+                $clinical_status=DropDown::find($request['clinical_status_id']);
+                $stress_factor=$request['stress_factor'];
+                if (!$request->has('stress_factor')){
+                    if ($clinical_status->name=='elective surgery'){
+                        $stress_factor=rand(1,1.2);
+                    }elseif ($clinical_status=='multiple trauma' || $clinical_status=='severe infection'){
+                        $stress_factor=rand(1.2,1.6);
+                    }elseif ($clinical_status=='Multiple /long done fractures'){
+                        $stress_factor=rand(1.1,1.3);
+                    }elseif ($clinical_status=='Infection with trauma'){
+                        $stress_factor=rand(1.3,1.5);
+                    }elseif ($clinical_status=='Sepsis'){
+                        $stress_factor=rand(1.2,1.4);
+                    }elseif ($clinical_status=='Closed head injury'){
+                        $stress_factor=1.3;
+                    }elseif ($clinical_status=='Cancer'){
+                        $stress_factor=rand(1.1,1.45);
+                    }elseif ($clinical_status=='Burns'){
+                        $stress_factor=rand(1,2.5);
+                    }else{
+                        $stress_factor=2.4;
+                    }
                 }
+            }else{
+                $stress_factor=1;
             }
+
             $arr['Total'] = $total_energy*$stress_factor;
         }else{
             $arr['Total'] = 0;
