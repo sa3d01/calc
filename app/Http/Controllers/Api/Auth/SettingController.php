@@ -31,7 +31,7 @@ class SettingController extends MasterController
             ]);
             return $this->sendResponse(new UserLoginResourse($user));
         }
-        return $this->sendError('كلمة المرور غير صحيحة.');
+        return $this->sendError('password incorrect.');
     }
 
     public function uploadImage(UploadImageRequest $request): object

@@ -17,7 +17,7 @@ class LoginController extends MasterController
         $credentials = $request->only('email', 'password');
         $user = User::where(['email' => $request['email'], 'type' => 'USER'])->first();
         if (!$user) {
-            return $this->sendError('هذا الحساب غير موجود.');
+            return $this->sendError('account not found.');
         }
         if (!$user->email_verified_at) {
             $this->createEmailVerificationCodeForUser($user);
@@ -32,13 +32,13 @@ class LoginController extends MasterController
             if ($user->banned==1){
                 $response = [
                     'status' => 401,
-                    'message' => 'تم حظرك من قبل إدارة التطبيق ..',
+                    'message' => 'you are banned from admin ..',
                 ];
                 return response()->json($response, 401);
             }
             return $this->sendResponse(new UserLoginResourse($user));
         }
-        return $this->sendError('كلمة المرور غير صحيحة.');
+        return $this->sendError('password incorrect.');
     }
 
     public function logout(): object

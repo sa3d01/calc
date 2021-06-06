@@ -20,28 +20,28 @@ class VerifyController extends MasterController
     {
         $user = User::where('email', $request['email'])->first();
         if ($user->email_verified_at != null) {
-            return $this->sendError('هذا الحساب مفعل.');
+            return $this->sendError('account verified.');
         }
         $unexpired_code_sent = EmailVerificationCode::where('email', $request['email'])->where('expires_at', '>', Carbon::now())->latest()->first();
         if ($unexpired_code_sent) {
-            return $this->sendError('تم ارسال كود التفعيل من قبل.');
+            return $this->sendError('code sent.');
         }
         $this->createEmailVerificationCodeForUser($user);
-        return $this->sendResponse([], 'تم إرسال كود التفعيل بنجاح .');
+        return $this->sendResponse([], 'code sent .');
     }
 
     public function verifyEmail(VerifyEmailRequest $request): object
     {
         $user = User::where('email', $request['email'])->first();
         if ($user->email_verified_at != null) {
-            return $this->sendError('هذا الحساب مفعل.');
+            return $this->sendError('account verified.');
         }
         $verificationCode = EmailVerificationCode::where([
             'email' => $request['email'],
             'code' => $request['code'],
         ])->latest()->first();
         if (!$verificationCode) {
-            return $this->sendError('كود التفعيل غير صحيح! حاول مرة أخرى.');
+            return $this->sendError('code incorrect.');
         }
         if (Carbon::now()->gt(Carbon::parse($verificationCode->expires_at))) {
             return $this->sendError('Code expired. ');

@@ -18,7 +18,7 @@ class DropDownController extends MasterController
 
     public function cities()
     {
-        return $this->sendResponse(new DropDownCollection($this->model->whereClass('City')->get()));
+        return $this->sendResponse(new DropDownCollection($this->model->whereClass('City')->whereStatus(1)->get()));
     }
 
 }
