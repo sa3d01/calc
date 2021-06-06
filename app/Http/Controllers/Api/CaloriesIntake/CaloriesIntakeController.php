@@ -29,7 +29,7 @@ class CaloriesIntakeController extends MasterController
     {
         return 655 + ( 9.563 * $weight) + ( 1.850 * $height ) - ( 4.676 * $age );
     }
-    function TotalEnergyForHealthy($activity_factor,$bmr):int
+    function TotalEnergyForHealthy($activity_factor,$bmr)
     {
         switch ($activity_factor){
             case "Very Active":
@@ -49,7 +49,7 @@ class CaloriesIntakeController extends MasterController
         }
         return $total_energy;
     }
-    function TotalEnergyForHospitalized($activity_factor,$bmr):int
+    function TotalEnergyForHospitalized($activity_factor,$bmr)
     {
         switch ($activity_factor){
             case "OverWeight"||"Obese":
