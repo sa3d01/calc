@@ -42,16 +42,16 @@ class TubeFeedingFormulaController extends MasterController
             $quantity=$formula_nutrient->volume/$request['quantity'];
         }
         $arr['name']=$formula_nutrient->tubeFeeding->name;
-        $arr['K.cal']=$formula_nutrient->k_cal/$quantity;
-        $arr['CHO g']=$formula_nutrient->cho_g/$quantity;
-        $arr['Protein g']=$formula_nutrient->protein_g/$quantity;
-        $arr['Fat g']=$formula_nutrient->fat_g/$quantity;
-        $arr['Na mg']=$formula_nutrient->na_mg/$quantity;
-        $arr['K mg']=$formula_nutrient->k_mg/$quantity;
-        $arr['P mg']=$formula_nutrient->p_mg/$quantity;
-        $arr['Fiber g']=$formula_nutrient->fiber_g/$quantity;
-        $arr['Water mL']=$formula_nutrient->water_mL/$quantity;
-        $arr['mOsm']=$formula_nutrient->mosm/$quantity;
+        $arr['K.cal']=round($formula_nutrient->k_cal/$quantity,10);
+        $arr['CHO g']=round($formula_nutrient->cho_g/$quantity,10);
+        $arr['Protein g']=round($formula_nutrient->protein_g/$quantity,10);
+        $arr['Fat g']=round($formula_nutrient->fat_g/$quantity,10);
+        $arr['Na mg']=round($formula_nutrient->na_mg/$quantity,10);
+        $arr['K mg']=round($formula_nutrient->k_mg/$quantity,10);
+        $arr['P mg']=round($formula_nutrient->p_mg/$quantity,10);
+        $arr['Fiber g']=round($formula_nutrient->fiber_g/$quantity,10);
+        $arr['Water mL']=round($formula_nutrient->water_mL/$quantity,10);
+        $arr['mOsm']=round($formula_nutrient->mosm/$quantity,10);
         return $this->sendResponse($arr);
     }
     public function twiceCalc(Request $request):object
@@ -83,28 +83,28 @@ class TubeFeedingFormulaController extends MasterController
             $quantity_2=$formula_nutrient_2->volume/$request['quantity'][1];
         }
         $arr_1['name']=$tube_feeding_1->name;
-        $arr_1['K.cal']=$formula_nutrient_1->k_cal/$quantity_1;
-        $arr_1['CHO g']=$formula_nutrient_1->cho_g/$quantity_1;
-        $arr_1['Protein g']=$formula_nutrient_1->protein_g/$quantity_1;
-        $arr_1['Fat g']=$formula_nutrient_1->fat_g/$quantity_1;
-        $arr_1['Na mg']=$formula_nutrient_1->na_mg/$quantity_1;
-        $arr_1['K mg']=$formula_nutrient_1->k_mg/$quantity_1;
-        $arr_1['P mg']=$formula_nutrient_1->p_mg/$quantity_1;
-        $arr_1['Fiber g']=$formula_nutrient_1->fiber_g/$quantity_1;
-        $arr_1['Water mL']=$formula_nutrient_1->water_mL/$quantity_1;
-        $arr_1['mOsm']=$formula_nutrient_1->mosm/$quantity_1;
+        $arr_1['K.cal']=round($formula_nutrient_1->k_cal/$quantity_1,10);
+        $arr_1['CHO g']=round($formula_nutrient_1->cho_g/$quantity_1,10);
+        $arr_1['Protein g']=round($formula_nutrient_1->protein_g/$quantity_1,10);
+        $arr_1['Fat g']=round($formula_nutrient_1->fat_g/$quantity_1,10);
+        $arr_1['Na mg']=round($formula_nutrient_1->na_mg/$quantity_1,10);
+        $arr_1['K mg']=round($formula_nutrient_1->k_mg/$quantity_1,10);
+        $arr_1['P mg']=round($formula_nutrient_1->p_mg/$quantity_1,10);
+        $arr_1['Fiber g']=round($formula_nutrient_1->fiber_g/$quantity_1,10);
+        $arr_1['Water mL']=round($formula_nutrient_1->water_mL/$quantity_1,10);
+        $arr_1['mOsm']=round($formula_nutrient_1->mosm/$quantity_1,10);
         $data[]=$arr_1;
         $arr_2['name']=$tube_feeding_2->name;
-        $arr_2['K.cal']=$formula_nutrient_2->k_cal/$quantity_2;
-        $arr_2['CHO g']=$formula_nutrient_2->cho_g/$quantity_2;
-        $arr_2['Protein g']=$formula_nutrient_2->protein_g/$quantity_2;
-        $arr_2['Fat g']=$formula_nutrient_2->fat_g/$quantity_2;
-        $arr_2['Na mg']=$formula_nutrient_2->na_mg/$quantity_2;
-        $arr_2['K mg']=$formula_nutrient_2->k_mg/$quantity_2;
-        $arr_2['P mg']=$formula_nutrient_2->p_mg/$quantity_2;
-        $arr_2['Fiber g']=$formula_nutrient_2->fiber_g/$quantity_2;
-        $arr_2['Water mL']=$formula_nutrient_2->water_mL/$quantity_2;
-        $arr_2['mOsm']=$formula_nutrient_2->mosm/$quantity_2;
+        $arr_2['K.cal']=round($formula_nutrient_2->k_cal/$quantity_2,10);
+        $arr_2['CHO g']=round($formula_nutrient_2->cho_g/$quantity_2,10);
+        $arr_2['Protein g']=round($formula_nutrient_2->protein_g/$quantity_2,10);
+        $arr_2['Fat g']=round($formula_nutrient_2->fat_g/$quantity_2,10);
+        $arr_2['Na mg']=round($formula_nutrient_2->na_mg/$quantity_2,10);
+        $arr_2['K mg']=round($formula_nutrient_2->k_mg/$quantity_2,10);
+        $arr_2['P mg']=round($formula_nutrient_2->p_mg/$quantity_2,10);
+        $arr_2['Fiber g']=round($formula_nutrient_2->fiber_g/$quantity_2,10);
+        $arr_2['Water mL']=round($formula_nutrient_2->water_mL/$quantity_2,10);
+        $arr_2['mOsm']=round($formula_nutrient_2->mosm/$quantity_2,10);
         $data[]=$arr_2;
         return $this->sendResponse($data);
     }
