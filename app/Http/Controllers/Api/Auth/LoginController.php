@@ -31,10 +31,10 @@ class LoginController extends MasterController
         if (auth('api')->attempt($credentials)) {
             if ($user->banned==1){
                 $response = [
-                    'status' => 401,
+                    'status' => 400,
                     'message' => 'you are banned from admin ..',
                 ];
-                return response()->json($response, 401);
+                return response()->json($response, 200);
             }
             return $this->sendResponse(new UserLoginResourse($user));
         }
