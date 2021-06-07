@@ -49,17 +49,14 @@ class CaloriesIntakeController extends MasterController
         }
         return $total_energy;
     }
-    function TotalEnergyForHospitalized($activity_factor,$bmr)
+    function TotalEnergyForHospitalized($activity_factor,$bmr):float
     {
-        switch ($activity_factor){
-            case "OverWeight"||"Obese":
-                $total_energy=1.1 * $bmr;
-                break;
-            case "UnderWeight"||"Normal":
-                $total_energy=1.2 * $bmr;
-                break;
-            default:
-                $total_energy=1.3 * $bmr;
+        if ($activity_factor==="OverWeight" || $activity_factor==="Obese"){
+            $total_energy=1.1 * $bmr;
+        }elseif ($activity_factor==="UnderWeight" || $activity_factor==="Normal"){
+            $total_energy=1.2 * $bmr;
+        }else{
+            $total_energy=1.3 * $bmr;
         }
         return $total_energy;
     }
@@ -84,8 +81,7 @@ class CaloriesIntakeController extends MasterController
         }
         return $this->sendResponse($arr);
     }
-
-    public function hospitalizedCalc(HospitalizedCaloriesRequest $request): object
+    public function hospitalizedCalc(HospitalizedCaloriesRequest $request)
     {
         $request->validated();
         $weight=$request['weight'];
@@ -126,7 +122,6 @@ class CaloriesIntakeController extends MasterController
             }else{
                 $stress_factor=1;
             }
-
             $arr['Total'] =round($total_energy*$stress_factor,2);
         }else{
             $arr['Total'] = 0;
@@ -134,6 +129,4 @@ class CaloriesIntakeController extends MasterController
         $arr['BMR'] = $bmr;
         return $this->sendResponse($arr);
     }
-
-
 }
