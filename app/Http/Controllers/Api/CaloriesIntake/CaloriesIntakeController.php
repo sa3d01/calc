@@ -31,21 +31,16 @@ class CaloriesIntakeController extends MasterController
     }
     function TotalEnergyForHealthy($activity_factor,$bmr)
     {
-        switch ($activity_factor){
-            case "Very Active":
-                $total_energy=1.725 * $bmr;
-                break;
-            case "Extremely Active":
-                $total_energy=1.9 * $bmr;
-                break;
-            case "Moderately Active":
-                $total_energy=1.55 * $bmr;
-                break;
-            case "Lightly Active":
-                $total_energy=1.375 * $bmr;
-                break;
-            default:
-                $total_energy=1.2 * $bmr;
+        if ($activity_factor=="Very active"){
+            $total_energy=1.725 * $bmr;
+        }elseif ($activity_factor=="Extremely active"){
+            $total_energy=1.9 * $bmr;
+        }elseif ($activity_factor=="Moderately active"){
+            $total_energy=1.55 * $bmr;
+        }elseif ($activity_factor=="Lightly Active"){
+            $total_energy=1.375 * $bmr;
+        }else{
+            $total_energy=1.2 * $bmr;
         }
         return $total_energy;
     }
