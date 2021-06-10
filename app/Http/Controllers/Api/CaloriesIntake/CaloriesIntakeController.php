@@ -37,7 +37,7 @@ class CaloriesIntakeController extends MasterController
             $total_energy=1.9 * $bmr;
         }elseif ($activity_factor=="Moderately active"){
             $total_energy=1.55 * $bmr;
-        }elseif ($activity_factor=="Lightly Active"){
+        }elseif ($activity_factor=="Light active"){
             $total_energy=1.375 * $bmr;
         }else{
             $total_energy=1.2 * $bmr;
