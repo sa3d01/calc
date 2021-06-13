@@ -88,7 +88,8 @@ Route::group([
         //LaboratoryTest
         Route::group(['namespace' => 'NutrientFactor', 'prefix' => 'nutrient-factors'], function () {
             Route::get('nutrient', 'NutrientFactorController@nutrients');
-            Route::get('nutrient/{id}/drug', 'NutrientFactorController@drugs');
+//            Route::get('nutrient/{id}/drug', 'NutrientFactorController@drugs');
+            Route::get('drug', 'NutrientFactorController@drugs');
             Route::post('calc', 'NutrientFactorController@calc');
         });
     });

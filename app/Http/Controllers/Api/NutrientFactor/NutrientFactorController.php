@@ -5,7 +5,6 @@ namespace App\Http\Controllers\Api\NutrientFactor;
 use App\Http\Controllers\Api\MasterController;
 use App\Http\Resources\DropDownCollection;
 use App\Models\DropDown;
-use App\Models\LapTest;
 use App\Models\NutrientFactor;
 use App\Models\Resource;
 use Illuminate\Http\Request;
@@ -25,15 +24,19 @@ class NutrientFactorController extends MasterController
         return $this->sendResponse(new DropDownCollection(DropDown::where('class', 'Nutrient')->where('parent_id', null)->get()));
     }
 
-    public function drugs($id): object
+    public function drugs(): object
     {
-        return $this->sendResponse(new DropDownCollection(DropDown::whereClass('Drug')->where('parent_id', $id)->get()));
+        $drugs_q=DropDown::whereClass('Drug');
+        if (\request()->input('drug')){
+            $drugs_q=$drugs_q->where('name','LIKE','%'.\request()->input('drug').'%');
+        }
+        return $this->sendResponse(new DropDownCollection($drugs_q->get()));
     }
 
     public function calc(Request $request)
     {
         $validator = Validator::make($request->all(), [
-            'nutrient_id' => 'required|exists:drop_downs,id',
+            'nutrient_id' => 'nullable|exists:drop_downs,id',
             'drug_id' => 'required|exists:drop_downs,id',
         ]);
         if ($validator->fails()) {
