@@ -36,13 +36,22 @@ class NutrientFactorController extends MasterController
     public function calc(Request $request)
     {
         $validator = Validator::make($request->all(), [
-            'nutrient_id' => 'nullable|exists:drop_downs,id',
-            'drug_id' => 'required|exists:drop_downs,id',
+//            'nutrient_id' => 'nullable|exists:drop_downs,id',
+            'drug_id' => 'nullable|exists:drop_downs,id',
+//            'drug_name' => 'nullable|exists:drop_downs,name',
         ]);
         if ($validator->fails()) {
             return $this->sendError($validator->errors()->first());
         }
-        $result = NutrientFactor::where('drug_id', $request['drug_id'])->first();
+        if ($request->has('drug_id')){
+            $result = NutrientFactor::where('drug_id', $request['drug_id'])->first();
+        }else{
+            $drug=DropDown::whereClass('Drug')->where('name','LIKE','%'.$request['drug_name'].'%')->first();
+            if (!$drug){
+                return $this->sendError('no data');
+            }
+            $result = NutrientFactor::where('drug_id', $drug->id)->first();
+        }
         if (!$result) {
             return $this->sendError('no data');
         }
