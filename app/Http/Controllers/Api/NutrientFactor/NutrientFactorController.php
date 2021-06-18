@@ -44,18 +44,19 @@ class NutrientFactorController extends MasterController
             return $this->sendError($validator->errors()->first());
         }
         if ($request->has('drug_id')){
-            $result = NutrientFactor::where('drug_id', $request['drug_id'])->first();
+            $drug_id=$request['drug_id'];
         }else{
             $drug=DropDown::whereClass('Drug')->where('name','LIKE','%'.$request['drug_name'].'%')->first();
             if (!$drug){
                 return $this->sendError('no data');
             }
-            $result = NutrientFactor::where('drug_id', $drug->id)->first();
+            $drug_id=$drug->id;
         }
+        $result = NutrientFactor::where('drug_id', $drug_id)->first();
         if (!$result) {
             return $this->sendError('no data');
         }
-        $data['results']=NutrientFactor::where('drug_id', $request['drug_id'])->pluck('result');
+        $data['results']=NutrientFactor::where('drug_id', $drug_id)->pluck('result');
         $data['resources']=Resource::pluck('name');
         return $this->sendResponse($data);
     }
