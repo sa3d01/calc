@@ -96,22 +96,28 @@ class CaloriesIntakeController extends MasterController
                 if (!$request->has('stress_factor')){
                     if ($clinical_status->name=='elective surgery'){
                         $stress_factor=rand(1,1.2);
-                    }elseif ($clinical_status=='multiple trauma' || $clinical_status=='severe infection'){
+                    }elseif ($clinical_status->name=='multiple trauma' || $clinical_status->name=='severe infection'){
                         $stress_factor=rand(1.2,1.6);
-                    }elseif ($clinical_status=='Multiple /long done fractures'){
+                    }elseif ($clinical_status->name=='Multiple /long done fractures'){
                         $stress_factor=rand(1.1,1.3);
-                    }elseif ($clinical_status=='Infection with trauma'){
+                    }elseif ($clinical_status->name=='Infection with trauma'){
                         $stress_factor=rand(1.3,1.5);
-                    }elseif ($clinical_status=='Sepsis'){
+                    }elseif ($clinical_status->name=='Sepsis'){
                         $stress_factor=rand(1.2,1.4);
-                    }elseif ($clinical_status=='Closed head injury'){
+                    }elseif ($clinical_status->name=='Closed head injury'){
                         $stress_factor=1.3;
-                    }elseif ($clinical_status=='Cancer'){
+                    }elseif ($clinical_status->name=='Cancer'){
                         $stress_factor=rand(1.1,1.45);
-                    }elseif ($clinical_status=='Burns'){
+                    }elseif ($clinical_status->name=='Burns'){
                         $stress_factor=rand(1,2.5);
                     }else{
                         $stress_factor=2.4;
+                    }
+                }elseif ($clinical_status->name=='Fever'){
+                    $stress_factor_count=$stress_factor-37;
+                    $stress_factor=1.2;
+                    for($i=0;$i<$stress_factor_count;$i++){
+                        $stress_factor=$stress_factor+1.2;
                     }
                 }
             }else{
