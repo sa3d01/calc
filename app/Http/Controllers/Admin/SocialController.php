@@ -19,8 +19,10 @@ class SocialController extends MasterController
         $twitter = $this->model->first()->socials['twitter'];
         $facebook = $this->model->first()->socials['facebook'];
         $instagram = $this->model->first()->socials['instagram'];
+        $youtube = $this->model->first()->socials['youtube'];
         $email = $this->model->value('email');
-        return view('Dashboard.social.edit', compact('snap','twitter','facebook','instagram','email'));
+        $mobile = $this->model->value('mobile');
+        return view('Dashboard.social.edit', compact('snap','twitter','facebook','instagram','youtube','email','mobile'));
     }
 
     public function updateSocial(Request $request):object
@@ -32,8 +34,10 @@ class SocialController extends MasterController
                'twitter'=>$request['twitter'],
                'facebook'=>$request['facebook'],
                'instagram'=>$request['instagram'],
+               'youtube'=>$request['youtube'],
            ],
-            'email'=>$request['email']
+            'email'=>$request['email'],
+            'mobile'=>$request['mobile']
         ]);
         return redirect()->back()->with('updated');
     }
