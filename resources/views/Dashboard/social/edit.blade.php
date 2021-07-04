@@ -33,8 +33,16 @@
                                 <input type="url" name="instagram" class="form-control" id="instagram" value="{{$instagram}}">
                             </div>
                             <div class="form-group">
+                                <label for="youtube">youtube*</label>
+                                <input type="url" name="youtube" class="form-control" id="youtube" value="{{$youtube}}">
+                            </div>
+                            <div class="form-group">
                                 <label for="email">email*</label>
                                 <input type="url" name="email" class="form-control" id="email" value="{{$email}}">
+                            </div>
+                            <div class="form-group">
+                                <label for="mobile">mobile*</label>
+                                <input type="url" name="mobile" class="form-control" id="mobile" value="{{$mobile}}">
                             </div>
                             <div class="form-group text-right mb-0">
                                 <button class="btn btn-primary waves-effect waves-light mr-1" type="submit">
