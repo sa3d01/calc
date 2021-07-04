@@ -42,7 +42,7 @@
                             </div>
                             <div class="form-group">
                                 <label for="mobile">mobile*</label>
-                                <input type="url" name="mobile" class="form-control" id="mobile" value="{{$mobile}}">
+                                <input type="text" name="mobile" class="form-control" id="mobile" value="{{$mobile}}">
                             </div>
                             <div class="form-group text-right mb-0">
                                 <button class="btn btn-primary waves-effect waves-light mr-1" type="submit">
