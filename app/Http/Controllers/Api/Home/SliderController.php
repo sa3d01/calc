@@ -29,6 +29,7 @@ class SliderController extends MasterController
             $result['title']=$datum->title;
             $result['note']=$datum->note;
             $result['image']=$datum->image;
+            $result['link']=$datum->link??"";
             $results[]=$result;
         }
         return $this->sendResponse($results);

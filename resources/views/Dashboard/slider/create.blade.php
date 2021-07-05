@@ -32,6 +32,10 @@
                                 <textarea id="note" required class="form-control" name="note"></textarea>
                             </div>
                             <div class="form-group">
+                                <label for="link">الرابط الخارجي*</label>
+                                <input type="url" name="link" class="form-control" id="link">
+                            </div>
+                            <div class="form-group">
                                 <label>موعد بداية العرض</label>
                                 <div class="input-group">
                                     <input type="text" name="start_date" class="form-control" placeholder="mm/dd/yyyy" id="datepicker">
