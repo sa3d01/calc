@@ -81,6 +81,9 @@
                     <a href="{{route('admin.contact_type.index')}}">أنواع التواصل</a>
                 </li>
                 <li>
+                    <a href="{{route('admin.contact.index')}}">رسائل التواصل الإجتماعي</a>
+                </li>
+                <li>
                     <a href="{{route('admin.slider.index')}}">الإعلانات</a>
                 </li>
                 <li>
