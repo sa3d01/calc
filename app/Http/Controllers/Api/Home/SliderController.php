@@ -26,8 +26,8 @@ class SliderController extends MasterController
         $results=[];
         foreach ($data as $datum){
             $result['id']=$datum->id;
-            $result['title']=$datum->title;
-            $result['note']=$datum->note;
+            $result['title']=$datum->title??"";
+            $result['note']=$datum->note??"";
             $result['image']=$datum->image;
             $result['link']=$datum->link??"";
             $results[]=$result;
