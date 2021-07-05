@@ -23,36 +23,36 @@
                         <form method="POST" action="{{route('admin.slider.store')}}" enctype="multipart/form-data" data-parsley-validate novalidate>
                             @csrf
                             @method('POST')
-                            <div class="form-group">
-                                <label for="title">العنوان*</label>
-                                <input type="text" name="title" required class="form-control" id="title">
-                            </div>
-                            <div class="form-group">
-                                <label for="note">الوصف النصى*</label>
-                                <textarea id="note" required class="form-control" name="note"></textarea>
-                            </div>
+{{--                            <div class="form-group">--}}
+{{--                                <label for="title">العنوان*</label>--}}
+{{--                                <input type="text" name="title" required class="form-control" id="title">--}}
+{{--                            </div>--}}
+{{--                            <div class="form-group">--}}
+{{--                                <label for="note">الوصف النصى*</label>--}}
+{{--                                <textarea id="note" required class="form-control" name="note"></textarea>--}}
+{{--                            </div>--}}
                             <div class="form-group">
                                 <label for="link">الرابط الخارجي*</label>
                                 <input type="url" name="link" class="form-control" id="link">
                             </div>
-                            <div class="form-group">
-                                <label>موعد بداية العرض</label>
-                                <div class="input-group">
-                                    <input type="text" name="start_date" class="form-control" placeholder="mm/dd/yyyy" id="datepicker">
-                                    <div class="input-group-append">
-                                        <span class="input-group-text"><i class="ti-calendar"></i></span>
-                                    </div>
-                                </div><!-- input-group -->
-                            </div>
-                            <div class="form-group">
-                                <label>موعد نهاية العرض</label>
-                                <div class="input-group">
-                                    <input type="text" name="end_date" class="form-control" placeholder="mm/dd/yyyy" id="datepicker">
-                                    <div class="input-group-append">
-                                        <span class="input-group-text"><i class="ti-calendar"></i></span>
-                                    </div>
-                                </div><!-- input-group -->
-                            </div>
+{{--                            <div class="form-group">--}}
+{{--                                <label>موعد بداية العرض</label>--}}
+{{--                                <div class="input-group">--}}
+{{--                                    <input type="text" name="start_date" class="form-control" placeholder="mm/dd/yyyy" id="datepicker">--}}
+{{--                                    <div class="input-group-append">--}}
+{{--                                        <span class="input-group-text"><i class="ti-calendar"></i></span>--}}
+{{--                                    </div>--}}
+{{--                                </div><!-- input-group -->--}}
+{{--                            </div>--}}
+{{--                            <div class="form-group">--}}
+{{--                                <label>موعد نهاية العرض</label>--}}
+{{--                                <div class="input-group">--}}
+{{--                                    <input type="text" name="end_date" class="form-control" placeholder="mm/dd/yyyy" id="datepicker">--}}
+{{--                                    <div class="input-group-append">--}}
+{{--                                        <span class="input-group-text"><i class="ti-calendar"></i></span>--}}
+{{--                                    </div>--}}
+{{--                                </div><!-- input-group -->--}}
+{{--                            </div>--}}
                             <div class="form-group">
                                 <label for="image">الصورة</label>
                                 <div class="card-box">

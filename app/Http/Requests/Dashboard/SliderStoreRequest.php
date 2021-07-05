@@ -24,10 +24,10 @@ class SliderStoreRequest extends FormRequest
     public function rules()
     {
         return [
-            'title' => 'required|string|max:110',
-            'note' => 'required|string|max:400',
-            'start_date' => 'required|date|after:yesterday',
-            'end_date' => 'required||after:today',
+            'title' => 'nullable|string|max:110',
+            'note' => 'nullable|string|max:400',
+            'start_date' => 'nullable|date|after:yesterday',
+            'end_date' => 'nullable|after:today',
             'image' => 'required|mimes:png,jpg,jpeg',
         ];
     }

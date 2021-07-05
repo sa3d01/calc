@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Requests\Dashboard\SliderStoreRequest;
 use App\Models\Slider;
+use Carbon\Carbon;
 
 class SliderController extends MasterController
 {
@@ -28,6 +29,8 @@ class SliderController extends MasterController
     {
         $data = $request->all();
         $data['user_id'] = auth()->id();
+        $data['start_date']=Carbon::now()->timestamp;
+        $data['end_date']=Carbon::now()->addMonths(10)->timestamp;
         $this->model->create($data);
         return redirect()->route('admin.slider.index')->with('created');
     }

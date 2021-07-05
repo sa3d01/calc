@@ -18,10 +18,10 @@
                         <table id="datatable-buttons" class="table table-striped table-bordered dt-responsive nowrap">
                             <thead>
                             <tr>
-                                <th>موعد بداية العرض</th>
-                                <th>موعد نهاية العرض</th>
-                                <th>العنوان</th>
-                                <th>الوصف</th>
+{{--                                <th>موعد بداية العرض</th>--}}
+{{--                                <th>موعد نهاية العرض</th>--}}
+{{--                                <th>العنوان</th>--}}
+{{--                                <th>الوصف</th>--}}
                                 <th>الرابط</th>
                                 <th>الصورة</th>
                                 <th>العمليات المتاحة</th>
@@ -30,10 +30,10 @@
                             <tbody>
                             @foreach($rows as $row)
                                 <tr>
-                                    <td>{{\Carbon\Carbon::createFromTimestamp($row->start_date)->format('Y-M-d')}}</td>
-                                    <td>{{\Carbon\Carbon::createFromTimestamp($row->end_date)->format('Y-M-d')}}</td>
-                                    <td>{{$row->title}}</td>
-                                    <td>{{$row->note}}</td>
+{{--                                    <td>{{\Carbon\Carbon::createFromTimestamp($row->start_date)->format('Y-M-d')}}</td>--}}
+{{--                                    <td>{{\Carbon\Carbon::createFromTimestamp($row->end_date)->format('Y-M-d')}}</td>--}}
+{{--                                    <td>{{$row->title}}</td>--}}
+{{--                                    <td>{{$row->note}}</td>--}}
                                     <td>{{$row->link}}</td>
                                     <td data-toggle="modal" data-target="#imgModal{{$row->id}}">
                                         <img width="50px" height="50px" class="img_preview" src="{{ $row->image}}">
