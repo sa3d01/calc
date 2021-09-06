@@ -36,6 +36,11 @@ Route::group([
         Route::get('settings', 'SettingController@getSettings');
         Route::get('cities', 'DropDownController@cities');
         Route::get('pages/{user_type}/{type}', 'PageController@getPage');
+
+        Route::post('upload-clinical-status','DropDownController@uploadClinicalStatus');
+        Route::post('upload-drugs','DropDownController@uploadDrugs');
+        Route::post('upload-formula-nutrients','DropDownController@uploadFormulanutrients');
+        Route::post('upload-lap-tests','DropDownController@uploadLapTests');
     });
     //Home
     Route::group(['namespace' => 'Home', 'prefix' => 'home'], function () {

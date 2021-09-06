@@ -94,24 +94,29 @@ class CaloriesIntakeController extends MasterController
                 $clinical_status=DropDown::find($request['clinical_status_id']);
                 $stress_factor=$request['stress_factor'];
                 if (!$request->has('stress_factor')){
-                    if ($clinical_status->name=='elective surgery'){
-                        $stress_factor=rand(1,1.2);
-                    }elseif ($clinical_status->name=='multiple trauma' || $clinical_status->name=='severe infection'){
-                        $stress_factor=rand(1.2,1.6);
-                    }elseif ($clinical_status->name=='Multiple /long done fractures'){
-                        $stress_factor=rand(1.1,1.3);
-                    }elseif ($clinical_status->name=='Infection with trauma'){
-                        $stress_factor=rand(1.3,1.5);
-                    }elseif ($clinical_status->name=='Sepsis'){
-                        $stress_factor=rand(1.2,1.4);
-                    }elseif ($clinical_status->name=='Closed head injury'){
-                        $stress_factor=1.3;
-                    }elseif ($clinical_status->name=='Cancer'){
-                        $stress_factor=rand(1.1,1.45);
-                    }elseif ($clinical_status->name=='Burns'){
-                        $stress_factor=rand(1,2.5);
+                    // if ($clinical_status->name=='Elective surgery'){
+                    //     $stress_factor=rand(1,1.2);
+                    // }elseif ($clinical_status->name=='Multiple trauma' || $clinical_status->name=='Severe infection'){
+                    //     $stress_factor=rand(1.2,1.6);
+                    // }elseif ($clinical_status->name=='Multiple /long done fractures'){
+                    //     $stress_factor=rand(1.1,1.3);
+                    // }elseif ($clinical_status->name=='Infection with trauma'){
+                    //     $stress_factor=rand(1.3,1.5);
+                    // }elseif ($clinical_status->name=='Sepsis'){
+                    //     $stress_factor=rand(1.2,1.4);
+                    // }elseif ($clinical_status->name=='Closed head injury'){
+                    //     $stress_factor=1.3;
+                    // }elseif ($clinical_status->name=='Cancer'){
+                    //     $stress_factor=rand(1.1,1.45);
+                    // }elseif ($clinical_status->name=='Burns'){
+                    //     $stress_factor=rand(1,2.5);
+                    // }else{
+                    //     $stress_factor=2.4;
+                    // }
+                    if($clinical_status->stress_factor_to!=null){
+                        $stress_factor=rand($clinical_status->stress_factor_from,$clinical_status->stress_factor_to);
                     }else{
-                        $stress_factor=2.4;
+                        $stress_factor=$clinical_status->stress_factor_from??2.4;
                     }
                 }elseif ($clinical_status->name=='Fever'){
                     $stress_factor_count=$stress_factor-37;
