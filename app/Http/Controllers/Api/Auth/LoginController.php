@@ -14,8 +14,8 @@ class LoginController extends MasterController
 
     public function login(LoginRequest $request): object
     {
-        $credentials = $request->only('email', 'password');
-        $user = User::where(['email' => $request['email'], 'type' => 'USER'])->first();
+        $credentials = $request->only('phone', 'password');
+        $user = User::where(['phone' => $request['phone'], 'type' => 'USER'])->first();
         if (!$user) {
             return $this->sendError('account not found.');
         }
@@ -24,7 +24,9 @@ class LoginController extends MasterController
             $response = [
                 'status' => 200,
                 'message' => 'unverified',
-                'data' => ['email_verified' => false],
+                'data' => [
+                    'email_verified' => false
+                ],
             ];
             return response()->json($response);
         }

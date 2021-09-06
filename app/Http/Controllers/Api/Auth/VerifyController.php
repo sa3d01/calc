@@ -18,11 +18,11 @@ class VerifyController extends MasterController
 
     public function resendEmailVerification(ResendEmailVerificationRequest $request): object
     {
-        $user = User::where('email', $request['email'])->first();
+        $user = User::where('phone', $request['phone'])->first();
         if ($user->email_verified_at != null) {
             return $this->sendError('account verified.');
         }
-        $unexpired_code_sent = EmailVerificationCode::where('email', $request['email'])->where('expires_at', '>', Carbon::now())->latest()->first();
+        $unexpired_code_sent = EmailVerificationCode::where('phone', $request['phone'])->where('expires_at', '>', Carbon::now())->latest()->first();
         if ($unexpired_code_sent) {
             return $this->sendError('code sent.');
         }
@@ -32,12 +32,12 @@ class VerifyController extends MasterController
 
     public function verifyEmail(VerifyEmailRequest $request): object
     {
-        $user = User::where('email', $request['email'])->first();
+        $user = User::where('phone', $request['phone'])->first();
         if ($user->email_verified_at != null) {
             return $this->sendError('account verified.');
         }
         $verificationCode = EmailVerificationCode::where([
-            'email' => $request['email'],
+            'phone' => $request['phone'],
             'code' => $request['code'],
         ])->latest()->first();
         if (!$verificationCode) {

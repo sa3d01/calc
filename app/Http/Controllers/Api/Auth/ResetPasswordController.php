@@ -20,22 +20,22 @@ class ResetPasswordController extends MasterController
 
     public function resend(ResendForgotPasswordRequest $request): object
     {
-        $user = User::where('email', $request['email'])->first();
+        $user = User::where('phone', $request['phone'])->first();
         $this->createPasswordResetCodeForUser($user);
-        return $this->sendResponse([], 'Password reset token has been sent to your email.');
+        return $this->sendResponse([], 'Password reset token has been sent to your phone.');
     }
 
     public function forgotPassword(ForgotPasswordRequest $request): object
     {
-        $user = User::where('email', $request['email'])->first();
+        $user = User::where('phone', $request['phone'])->first();
         $this->createPasswordResetCodeForUser($user);
-        return $this->sendResponse([], 'Password reset token has been sent to your email.');
+        return $this->sendResponse([], 'Password reset token has been sent to your phone.');
     }
 
     public function checkCode(CheckTokenRequest $request): object
     {
         $passwordResetObject = PasswordReset::where([
-            'email' => $request['email'],
+            'phone' => $request['phone'],
             'token' => $request['code'],
         ])->latest()->first();
         if (!$passwordResetObject) {
@@ -44,13 +44,13 @@ class ResetPasswordController extends MasterController
         if (Carbon::now()->gt(Carbon::parse($passwordResetObject->expires_at))) {
             return $this->sendError('Token expired. Please request a new one.');
         }
-        return $this->sendResponse([], 'email and token match successfully.');
+        return $this->sendResponse([], 'phone and token match successfully.');
     }
 
     public function setNewPassword(SetPasswordRequest $request): object
     {
         $passwordResetObject = PasswordReset::where([
-            'email' => $request['email'],
+            'phone' => $request['phone'],
             'token' => $request['code'],
         ])->latest()->first();
         if (!$passwordResetObject) {
@@ -59,7 +59,7 @@ class ResetPasswordController extends MasterController
         if (Carbon::now()->gt(Carbon::parse($passwordResetObject->expires_at))) {
             return $this->sendError('Token expired. Please request a new one.');
         }
-        $user = User::where('email', $request['email'])->first();
+        $user = User::where('phone', $request['phone'])->first();
         DB::transaction(function () use ($user, $passwordResetObject, $request) {
             $passwordResetObject->update(['verified' => Carbon::now()]);
             $user->update(['password' => $request['password']]);

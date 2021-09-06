@@ -20,9 +20,11 @@ class RegisterController extends MasterController
         $user->refresh();
         $role = Role::findOrCreate($user->type);
         $user->assignRole($role);
+
         $this->createEmailVerificationCodeForUser($user);
         return $this->sendResponse([
-            "email" => $request["email"]
+            "email" => $request["email"],
+            "phone" => $request["phone"],
         ]);
     }
 }

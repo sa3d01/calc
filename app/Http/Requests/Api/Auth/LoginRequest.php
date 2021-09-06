@@ -25,7 +25,7 @@ class LoginRequest extends ApiMasterRequest
     public function rules()
     {
         return [
-            'email' => 'required|email:rfc,dns|max:90|exists:users',
+            'phone' => 'required|max:90|exists:users',
             'password' => 'required|string|min:6|max:20',
             'device.id' => 'required',
             'device.os' => 'required|in:android,ios',

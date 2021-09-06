@@ -24,7 +24,8 @@ class ResendEmailVerificationRequest extends ApiMasterRequest
     public function rules()
     {
         return [
-            'email' => 'required|string|max:90|exists:users',
+            'phone' => 'required|string|max:90|exists:users',
+            'email' => 'nullable|string|max:90|exists:users',
         ];
     }
 

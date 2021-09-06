@@ -14,7 +14,7 @@ class CheckTokenRequest extends ApiMasterRequest
     public function rules()
     {
         return [
-            'email' => 'required|string|max:90|exists:users',
+            'phone' => 'required|string|max:90|exists:users',
             'code' => 'required|numeric|max:9999',
         ];
     }

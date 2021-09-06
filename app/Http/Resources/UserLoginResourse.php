@@ -30,6 +30,7 @@ class UserLoginResourse extends JsonResource
                 'id' => (int)$this->id,
                 'type' => $this->type,
                 'name' => $this->name,
+                'phone' => $this->phone ?? "",
                 'email' => $this->email ?? "",
                 'city' => [
                     'id' => $this->city ? (int)$this->city->id : 0,
