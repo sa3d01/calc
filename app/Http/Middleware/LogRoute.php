@@ -5,7 +5,6 @@ namespace App\Http\Middleware;
 use Carbon\Carbon;
 use Closure;
 use Illuminate\Support\Facades\DB;
-use Monolog\Logger;
 
 class LogRoute
 {
@@ -20,8 +19,6 @@ class LogRoute
     public function handle($request, Closure $next)
     {
         $response = $next($request);
-
-
         $log = [
             'uri' => $request->getUri(),
             'method' => $request->getMethod(),
@@ -31,7 +28,6 @@ class LogRoute
             'created_at' => Carbon::now()
         ];
         DB::table('logs')->insert($log);
-
         return $response;
     }
 }
