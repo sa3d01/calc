@@ -6,6 +6,7 @@ use \App\Http\Middleware\JwtTokenIsValid;
 Route::group([
     'namespace' => 'App\Http\Controllers\Api',
     'prefix' => 'v1',
+    'middleware'=>'log.route'
 ], function () {
     // AUTH
     Route::group(['namespace' => 'Auth', 'prefix' => 'auth'], function () {
