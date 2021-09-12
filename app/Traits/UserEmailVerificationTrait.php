@@ -10,7 +10,7 @@ trait UserEmailVerificationTrait
 
     protected function createEmailVerificationCodeForUser($user)
     {
-        $code=rand(1111,9999);
+        $code=1111;//rand(1111,9999);
         $data = [
             'user_id' => $user->id,
             'email' => $user->email,
