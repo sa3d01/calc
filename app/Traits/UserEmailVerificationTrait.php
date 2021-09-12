@@ -30,7 +30,7 @@ trait UserEmailVerificationTrait
                 "Username" => "0530005107",
                 "Password" => "Ahsan5107",
                 "Message" => $message,
-                "RecepientNumber" => $phoneNumber,
+                "RecepientNumber" => substr($phoneNumber, 1),
                 "ReplacementList" => "",
                 "SendDateTime" => "0",
                 "EnableDR" => False,
