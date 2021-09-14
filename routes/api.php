@@ -30,6 +30,8 @@ Route::group([
         ], function () {
             Route::post('logout', 'LoginController@logout');
             Route::put('update', 'SettingController@updateProfile');
+            Route::post('request-update-phone', 'SettingController@requestUpdatePhone');
+            Route::post('update-phone', 'SettingController@updatePhone');
         });
     });
     // General
