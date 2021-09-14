@@ -13,7 +13,10 @@ use Illuminate\Support\Str;
 use App\Models\EmailVerificationCode;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\DB;
-
+use App\Utils\PreparePhone;
+use Illuminate\Contracts\Validation\Validator;
+use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Http\Exceptions\HttpResponseException;
 class SettingController extends MasterController
 {
 
@@ -54,6 +57,16 @@ class SettingController extends MasterController
     {
 
         $user = auth()->user();
+        if ($request->has('new_phone')) {
+            $new_phone = new PreparePhone($request->new_phone);
+            if (!$new_phone->isValid()) {
+                throw new HttpResponseException(response()->json([
+                    'status' => 400,
+                    'message' => $new_phone->errorMsg()
+                ], 200));
+            }
+            $request->merge(['new_phone' => $new_phone->getNormalized()]);
+        }
         if ($request['new_phone']==$user->phone) {
             return $this->sendError('new phone incorrect.');
         }
@@ -79,6 +92,16 @@ class SettingController extends MasterController
     public function updatePhone(Request $request)
     {
         $user = auth()->user();
+        if ($request->has('new_phone')) {
+            $new_phone = new PreparePhone($request->new_phone);
+            if (!$new_phone->isValid()) {
+                throw new HttpResponseException(response()->json([
+                    'status' => 400,
+                    'message' => $new_phone->errorMsg()
+                ], 200));
+            }
+            $request->merge(['new_phone' => $new_phone->getNormalized()]);
+        }
         $verificationCode = EmailVerificationCode::where([
             'phone' => $request['new_phone'],
             'code' => $request['code'],
