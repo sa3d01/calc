@@ -52,7 +52,11 @@ class SettingController extends MasterController
 
     public function requestUpdatePhone(Request $request)
     {
+
         $user = auth()->user();
+        if ($request['new_phone']==$user->phone) {
+            return $this->sendError('new phone incorrect.');
+        }
         $user->update([
             'new_phone'=>$request['new_phone']
         ]);
