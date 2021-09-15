@@ -15,7 +15,7 @@
                             <p class="card-text">ID : {{$user->id}}</p>
                         </div>
                         <ul class="list-group list-group-flush">
-                            <li class="list-group-item"><strong>البريد : </strong><span>{{$user->email}}</span></li>
+                            <li class="list-group-item"><strong>الجوال : </strong><span>{{$user->phone}}</span></li>
                             <li class="list-group-item"><strong>المدينة : </strong><span>{{$user->city->name}}</span></li>
                             <li class="list-group-item"><strong>تاريخ الانضمام : </strong><span>{{$user->created_at}}</span></li>
                         </ul>

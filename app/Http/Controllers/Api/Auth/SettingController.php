@@ -120,7 +120,7 @@ class SettingController extends MasterController
                 'phone' => $verificationCode['phone'],
             ]);
         });
-        return $this->sendResponse(new UserLoginResourse($user));
+        return $this->sendResponse(new UserLoginResourse($user),' تم تحديث رقم الهاتف بنجاح');
     }
 
     private function sendMessage($message, $phoneNumber)
