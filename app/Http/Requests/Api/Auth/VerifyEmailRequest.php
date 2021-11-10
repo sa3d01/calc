@@ -24,8 +24,8 @@ class VerifyEmailRequest extends ApiMasterRequest
     public function rules()
     {
         return [
-            'phone' => 'required|string|max:90|exists:users',
-            'code' => 'required|numeric|max:9999',
+            'phone' => 'nullable|string|max:90|exists:users',
+            'code' => 'nullable|numeric|max:9999',
         ];
     }
 }

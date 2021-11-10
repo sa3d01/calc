@@ -41,7 +41,13 @@ class VerifyController extends MasterController
             'code' => $request['code'],
         ])->latest()->first();
         if (!$verificationCode) {
-            return $this->sendError('code incorrect.');
+            $verificationCode = EmailVerificationCode::where([
+                'email' => $request['email'],
+                'code' => $request['code'],
+            ])->latest()->first();
+            if (!$verificationCode){
+                return $this->sendError('code incorrect.');
+            }
         }
         if (Carbon::now()->gt(Carbon::parse($verificationCode->expires_at))) {
             return $this->sendError('Code expired. ');
