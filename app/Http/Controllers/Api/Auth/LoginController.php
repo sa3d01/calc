@@ -19,17 +19,17 @@ class LoginController extends MasterController
         if (!$user) {
             return $this->sendError('account not found.');
         }
-        if (!$user->email_verified_at) {
-            $this->createEmailVerificationCodeForUser($user);
-            $response = [
-                'status' => 200,
-                'message' => 'unverified',
-                'data' => [
-                    'email_verified' => false
-                ],
-            ];
-            return response()->json($response);
-        }
+//        if (!$user->email_verified_at) {
+//            $this->createEmailVerificationCodeForUser($user);
+//            $response = [
+//                'status' => 200,
+//                'message' => 'unverified',
+//                'data' => [
+//                    'email_verified' => false
+//                ],
+//            ];
+//            return response()->json($response);
+//        }
         if (auth('api')->attempt($credentials)) {
             if ($user->banned==1){
                 $response = [
