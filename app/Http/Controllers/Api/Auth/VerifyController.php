@@ -33,30 +33,30 @@ class VerifyController extends MasterController
     public function verifyEmail(VerifyEmailRequest $request): object
     {
         $user = User::where('phone', $request['phone'])->first();
-        if ($user->email_verified_at != null) {
-            return $this->sendError('account verified.');
-        }
-        $verificationCode = EmailVerificationCode::where([
-            'phone' => $request['phone'],
-            'code' => $request['code'],
-        ])->latest()->first();
-        if (!$verificationCode) {
-            $verificationCode = EmailVerificationCode::where([
-                'email' => $request['email'],
-                'code' => $request['code'],
-            ])->latest()->first();
-            if (!$verificationCode){
-                return $this->sendError('code incorrect.');
-            }
-        }
-        if (Carbon::now()->gt(Carbon::parse($verificationCode->expires_at))) {
-            return $this->sendError('Code expired. ');
-        }
-        DB::transaction(function () use ($user, $verificationCode) {
-            $now = Carbon::now();
-            $verificationCode->update(['verified_at' => $now]);
-            $user->update(['email_verified_at' => $now]);
-        });
+//        if ($user->email_verified_at != null) {
+//            return $this->sendError('account verified.');
+//        }
+//        $verificationCode = EmailVerificationCode::where([
+//            'phone' => $request['phone'],
+//            'code' => $request['code'],
+//        ])->latest()->first();
+//        if (!$verificationCode) {
+//            $verificationCode = EmailVerificationCode::where([
+//                'email' => $request['email'],
+//                'code' => $request['code'],
+//            ])->latest()->first();
+//            if (!$verificationCode){
+//                return $this->sendError('code incorrect.');
+//            }
+//        }
+//        if (Carbon::now()->gt(Carbon::parse($verificationCode->expires_at))) {
+//            return $this->sendError('Code expired. ');
+//        }
+//        DB::transaction(function () use ($user, $verificationCode) {
+//            $now = Carbon::now();
+//            $verificationCode->update(['verified_at' => $now]);
+//            $user->update(['email_verified_at' => $now]);
+//        });
         return $this->sendResponse(new UserLoginResourse($user));
     }
 }
