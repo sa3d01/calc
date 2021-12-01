@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Api\Auth;
 
 use App\Http\Controllers\Api\MasterController;
 use App\Http\Requests\Api\Auth\UserRegisterationRequest;
+use App\Http\Resources\UserLoginResourse;
 use App\Models\User;
 use App\Traits\UserEmailVerificationTrait;
 use Spatie\Permission\Models\Role;
@@ -21,10 +22,12 @@ class RegisterController extends MasterController
         $role = Role::findOrCreate($user->type);
         $user->assignRole($role);
 
-        $this->createEmailVerificationCodeForUser($user);
-        return $this->sendResponse([
-            "email" => $request["email"],
-            "phone" => $request["phone"],
-        ]);
+        //$this->createEmailVerificationCodeForUser($user);
+//        return $this->sendResponse([
+//            "email" => $request["email"],
+//            "phone" => $request["phone"],
+//        ]);
+        return $this->sendResponse(new UserLoginResourse($user));
+
     }
 }

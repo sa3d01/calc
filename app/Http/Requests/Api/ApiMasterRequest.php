@@ -17,7 +17,7 @@ class ApiMasterRequest extends FormRequest
     public function prepareForValidation()
     {
         if ($this->has('phone')) {
-            $phone = new PreparePhone($this->phone);
+            $phone = new PreparePhone($this->phone,$this->phone_country_label);
             if (!$phone->isValid()) {
                 throw new HttpResponseException(response()->json([
                     'status' => 400,

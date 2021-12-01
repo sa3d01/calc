@@ -26,6 +26,7 @@ class LoginRequest extends ApiMasterRequest
     {
         return [
             'phone' => 'required|max:90|exists:users',
+            'phone_country_label' => 'nullable|max:90',
             'password' => 'required|string|min:6|max:20',
             'device.id' => 'required',
             'device.os' => 'required|in:android,ios',

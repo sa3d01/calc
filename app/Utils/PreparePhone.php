@@ -14,11 +14,11 @@ class PreparePhone
     private $errorMsg = '';
     private $normalizedPhone;
 
-    public function __construct($phoneNumber)
+    public function __construct($phoneNumber,$phoneCountryLabel)
     {
         $this->phoneUtil = PhoneNumberUtil::getInstance();
 
-        $parsedPhone = $this->parsingPhone($phoneNumber);
+        $parsedPhone = $this->parsingPhone($phoneNumber,$phoneCountryLabel);
         if ($parsedPhone != null) {
             $this->validatePhone($parsedPhone);
             if ($this->isValid) {
@@ -27,10 +27,13 @@ class PreparePhone
         }
     }
 
-    private function parsingPhone($phoneNumber)
+    private function parsingPhone($phoneNumber,$phoneCountryLabel)
     {
+        if ($phoneCountryLabel==null){
+            $phoneCountryLabel="SA";
+        }
         try {
-            return $this->phoneUtil->parse($phoneNumber, "SA");
+            return $this->phoneUtil->parse($phoneNumber, $phoneCountryLabel);
         } catch (NumberParseException $e) {
             $this->errorMsg = $e->getMessage();
             return null;

@@ -26,6 +26,7 @@ class SetPasswordRequest extends ApiMasterRequest
         return [
             'phone' => 'required|string|max:90|exists:users',
             'code' => 'required|numeric|max:99999',
+            'phone_country_label' => 'nullable|max:90',
             'password' => 'required|string|max:10',
         ];
     }

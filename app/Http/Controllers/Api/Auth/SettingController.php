@@ -58,7 +58,7 @@ class SettingController extends MasterController
 
         $user = auth()->user();
         if ($request->has('new_phone')) {
-            $new_phone = new PreparePhone($request->new_phone);
+            $new_phone = new PreparePhone($request->new_phone,$request->phone_country_label);
             if (!$new_phone->isValid()) {
                 throw new HttpResponseException(response()->json([
                     'status' => 400,
@@ -93,7 +93,7 @@ class SettingController extends MasterController
     {
         $user = auth()->user();
         if ($request->has('new_phone')) {
-            $new_phone = new PreparePhone($request->new_phone);
+            $new_phone = new PreparePhone($request->new_phone,$request->phone_country_label);
             if (!$new_phone->isValid()) {
                 throw new HttpResponseException(response()->json([
                     'status' => 400,

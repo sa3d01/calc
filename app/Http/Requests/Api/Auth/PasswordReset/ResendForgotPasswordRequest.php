@@ -15,6 +15,7 @@ class ResendForgotPasswordRequest extends ApiMasterRequest
     {
         return [
             'phone' => 'required|string|max:90|exists:users',
+            'phone_country_label' => 'nullable|max:90',
         ];
     }
 }
