@@ -15,7 +15,7 @@ class CheckTokenRequest extends ApiMasterRequest
     {
         return [
             'phone' => 'required|string|max:90|exists:users',
-            'code' => 'required|numeric|max:9999',
+            'code' => 'nullable|numeric|max:9999',
             'phone_country_label' => 'nullable|max:90',
         ];
     }
