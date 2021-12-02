@@ -53,14 +53,29 @@ Route::prefix('/admin')->name('admin.')->namespace('App\Http\Controllers\Admin')
     Route::resource('city', 'CityController');
     Route::post('city/{id}/ban', 'CityController@ban')->name('city.ban');
     Route::post('city/{id}/activate', 'CityController@activate')->name('city.activate');
-
+//formula-content-classifications
     Route::get('/formula-content-classifications', 'FormulaContentOfNutrientsController@classifications')->name('formula_content.classifications');
+    Route::get('/formula-content-classifications/create', 'FormulaContentOfNutrientsController@createClassifications')->name('formula_content.create_classifications');
+
+    Route::get('/formula-content-classifications/create', 'FormulaContentOfNutrientsController@createClassifications')->name('formula_content.create_classification');
+    Route::get('/formula-content-classifications/{id}/edit', 'FormulaContentOfNutrientsController@editClassifications')->name('formula_content.edit_classification');
+    Route::put('/formula-content-classifications/{id}/update', 'FormulaContentOfNutrientsController@updateClassifications')->name('formula_content.update_classification');
+    Route::post('/formula-content-classifications/store', 'FormulaContentOfNutrientsController@storeClassifications')->name('formula_content.store_classification');
+
     Route::post('/formula-content-classifications/{id}/ban', 'FormulaContentOfNutrientsController@ban')->name('formula_content.ban_classification');
     Route::post('/formula-content-classifications/{id}/activate', 'FormulaContentOfNutrientsController@activate')->name('formula_content.activate_classification');
-
+//formula_nutrients
     Route::get('/formula_nutrients', 'FormulaContentOfNutrientsController@formula_nutrients')->name('formula_content.formula_nutrients');
     Route::post('/formula_nutrients/{id}/ban', 'FormulaContentOfNutrientsController@ban_formula_nutrients')->name('formula_content.ban_formula_nutrient');
     Route::post('/formula_nutrients/{id}/activate', 'FormulaContentOfNutrientsController@activate_formula_nutrients')->name('formula_content.activate_formula_nutrient');
 
+    Route::get('/formula-nutrients/create', 'FormulaContentOfNutrientsController@createFormulaNutrients')->name('formula_content.create_formula_nutrient');
+    Route::get('/formula-nutrients/{id}/edit', 'FormulaContentOfNutrientsController@editFormulaNutrients')->name('formula_content.edit_formula_nutrient');
+    Route::put('/formula-nutrients/{id}/update', 'FormulaContentOfNutrientsController@updateFormulaNutrients')->name('formula_content.update_formula_nutrient');
+    Route::post('/formula-nutrients/store', 'FormulaContentOfNutrientsController@storeFormulaNutrients')->name('formula_content.store_formula_nutrient');
+//ClinicalStatus
+    Route::post('/ClinicalStatus/{id}/ban', 'ClinicalStatusController@ban')->name('ClinicalStatus.ban');
+    Route::post('/ClinicalStatus/{id}/activate', 'ClinicalStatusController@activate')->name('ClinicalStatus.activate');
+    Route::resource('ClinicalStatus', 'ClinicalStatusController');
 
 });

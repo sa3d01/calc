@@ -1,5 +1,5 @@
 @extends('Dashboard.layouts.master')
-@section('title', 'الإعدادات العامة')
+@section('title', 'Formula Nutrients')
 @section('styles')
     <link href="{{asset('assets/libs/dropify/dist/css/dropify.min.css')}}" rel="stylesheet" type="text/css" />
 @endsection
@@ -17,37 +17,24 @@
                         </div>
                     @endif
                     <div class="card-box">
-                        <form method="POST" action="{{route('admin.settings.update')}}" enctype="multipart/form-data" data-parsley-validate novalidate>
+                        <form method="POST" action="{{route('admin.formula_content.store_formula_nutrient')}}" enctype="multipart/form-data" data-parsley-validate novalidate>
                             @csrf
-                            @method('PUT')
+                            @method('POST')
                             <div class="form-group">
-                                <label for="mobile">رقم الهاتف للتواصل*</label>
-                                <input type="text" name="mobile" required class="form-control" id="mobile" value="{{$setting->mobile}}">
+                                <label for="name">الإسم*</label>
+                                <input type="text" name="name" required class="form-control" id="name">
                             </div>
                             <div class="form-group">
-                                <label for="email">البريد الإلكترونى للتواصل*</label>
-                                <input type="email" name="email" required class="form-control" id="email" value="{{$setting->email}}">
+                                <label for="parent_id">Classification*</label>
+                                <select name="parent_id" required class="form-control" id="parent_id">
+                                    @foreach(\App\Models\DropDown::where('class','FormulaNutrientsClassification')->latest()->get() as $Classification)
+                                        <option value="{{$Classification->id}}">{{$Classification->name}}</option>
+                                    @endforeach
+                                </select>
                             </div>
-                            <div class="form-group">
-                                <label for="snap">رابط سناب شات*</label>
-                                <input type="url" name="socials[snap]" required class="form-control" id="snap" value="{{$setting->socials['snap']}}">
-                            </div>
-                            <div class="form-group">
-                                <label for="twitter">رابط twitter*</label>
-                                <input type="url" name="socials[twitter]" required class="form-control" id="twitter" value="{{$setting->socials['twitter']}}">
-                            </div>
-                            <div class="form-group">
-                                <label for="facebook">رابط facebook*</label>
-                                <input type="url" name="socials[facebook]" required class="form-control" id="facebook" value="{{$setting->socials['facebook']}}">
-                            </div>
-                            <div class="form-group">
-                                <label for="instagram">رابط instagram*</label>
-                                <input type="url" name="socials[instagram]" required class="form-control" id="instagram" value="{{$setting->socials['instagram']}}">
-                            </div>
-
                             <div class="form-group text-right mb-0">
                                 <button class="btn btn-primary waves-effect waves-light mr-1" type="submit">
-                                    تعديل
+                                    تأكيد
                                 </button>
                             </div>
                         </form>

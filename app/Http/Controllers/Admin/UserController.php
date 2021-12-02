@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Models\User;
+use Illuminate\Http\Request;
 
 class UserController extends MasterController
 {
@@ -42,6 +43,17 @@ class UserController extends MasterController
             ]
         );
         $user->refresh();
+        return redirect()->back()->with('updated');
+    }
+    public function edit($id):object
+    {
+        $row=$this->model->find($id);
+        return view('Dashboard.user.edit', compact('row'));
+    }
+    public function update($id, Request $request)
+    {
+        $page = $this->model->find($id);
+        $page->update($request->all());
         return redirect()->back()->with('updated');
     }
 

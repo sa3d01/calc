@@ -22,36 +22,40 @@
             </a>
         </li>
 
-{{--        <li>--}}
-{{--            <a href="{{route('admin.contact.index')}}">--}}
-{{--                <i class="mdi mdi-mailbox"></i>--}}
-{{--                <span> إدارة رسائل التواصل </span>--}}
-{{--            </a>--}}
-{{--        </li>--}}
 
-{{--        <li>--}}
-{{--            <a href="javascript: void(0);">--}}
-{{--                <i class="mdi mdi-share-variant"></i>--}}
-{{--                <span> المحتوى الطبى </span>--}}
-{{--                <span class="menu-arrow"></span>--}}
-{{--            </a>--}}
-{{--            <ul class="nav-second-level nav" aria-expanded="false">--}}
-{{--                <li>--}}
-{{--                    <a href="javascript: void(0);" aria-expanded="false">Formula Content Of Nutrients--}}
-{{--                        <span class="menu-arrow"></span>--}}
-{{--                    </a>--}}
-{{--                    <ul class="nav-third-level nav" aria-expanded="false">--}}
-{{--                        <li>--}}
-{{--                            <a href="{{route('admin.formula_content.classifications')}}">classifications</a>--}}
-{{--                        </li>--}}
-{{--                        <li>--}}
-{{--                            <a href="{{route('admin.formula_content.formula_nutrients')}}">tube feeding formula</a>--}}
-{{--                        </li>--}}
+        <li>
+            <a href="javascript: void(0);">
+                <i class="mdi mdi-share-variant"></i>
+                <span> المحتوى الطبى </span>
+                <span class="menu-arrow"></span>
+            </a>
+            <ul class="nav-second-level nav" aria-expanded="false">
+                <li>
+                    <a href="javascript: void(0);" aria-expanded="false">Nutrients
+                        <span class="menu-arrow"></span>
+                    </a>
+                    <ul class="nav-third-level nav" aria-expanded="false">
+                        <li>
+                            <a href="{{route('admin.formula_content.classifications')}}">classifications</a>
+                        </li>
+                        <li>
+                            <a href="{{route('admin.formula_content.formula_nutrients')}}">tube feeding formula</a>
+                        </li>
 
-{{--                    </ul>--}}
-{{--                </li>--}}
-{{--            </ul>--}}
-{{--        </li>--}}
+                    </ul>
+                </li>
+                <li>
+                    <a href="javascript: void(0);" aria-expanded="false">Clinical Status
+                        <span class="menu-arrow"></span>
+                    </a>
+                    <ul class="nav-third-level nav" aria-expanded="false">
+                        <li>
+                            <a href="{{route('admin.ClinicalStatus.index')}}">Clinical Status</a>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+        </li>
 
         <li>
             <a href="javascript: void(0);">
@@ -81,7 +85,7 @@
                     <a href="{{route('admin.contact_type.index')}}">أنواع التواصل</a>
                 </li>
                 <li>
-                    <a href="{{route('admin.contact.index')}}">رسائل التواصل الإجتماعي</a>
+                    <a href="{{route('admin.contact.index')}}">رسائل التواصل </a>
                 </li>
                 <li>
                     <a href="{{route('admin.slider.index')}}">الإعلانات</a>

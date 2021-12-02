@@ -1,5 +1,5 @@
 @extends('Dashboard.layouts.master')
-@section('title', 'المستخدمين')
+@section('title', $class)
 @section('styles')
     <link href="{{asset('assets/libs/datatables/dataTables.bootstrap4.css')}}" rel="stylesheet" type="text/css" />
     <link href="{{asset('assets/libs/datatables/responsive.bootstrap4.css')}}" rel="stylesheet" type="text/css" />
@@ -12,14 +12,18 @@
             <div class="row">
                 <div class="col-12">
                     <div class="card-box">
+                        <a href="{{route('admin.'.$class.'.create')}}">
+                            <button type="button" class="btn btn-block btn-sm btn-success waves-effect waves-light">إضافة +</button>
+                        </a>
                         <table id="datatable-buttons" class="table table-striped table-bordered dt-responsive nowrap">
                             <thead>
                             <tr>
-                                <th>الإسم</th>
-                                <th>الجوال</th>
-                                <th>email</th>
-                                <th>المدينة</th>
-                                <th>الحالة</th>
+                                <th>name</th>
+                                @if($class==="ClinicalStatus")
+                                    <th>stress factor from</th>
+                                    <th>stress factor to</th>
+                                @endif
+                                <th>status</th>
                                 <th>العمليات المتاحة</th>
                             </tr>
                             </thead>
@@ -27,30 +31,28 @@
                             @foreach($rows as $row)
                                 <tr>
                                     <td>{{$row->name}}</td>
-                                    <td>{{$row->phone}}</td>
-                                    <td>{{$row->email}}</td>
-                                    <td>{{$row->city->name}}</td>
+                                    @if($class==="ClinicalStatus")
+                                        <td>{{$row->stress_factor_from}}</td>
+                                        <td>{{$row->stress_factor_to}}</td>
+                                    @endif
                                     <td>
-                                        <span class="badge @if($row->banned==0) badge-success @else badge-danger @endif">
-                                            {{$row->banned==0?'مفعل':'غير مفعل'}}
+                                        <span class="badge @if($row->status==1) badge-success @else badge-danger @endif">
+                                            {{$row->status==1?'مفعل':'غير مفعل'}}
                                         </span>
                                     </td>
                                     <td>
                                         <div class="button-list">
-                                            <a href="{{route('admin.user.show',$row->id)}}">
-                                                <button class="btn btn-info waves-effect waves-light"> <i class="fa fa-eye mr-1"></i> <span>عرض</span> </button>
+                                            <a href="{{route('admin.'.$class.'.edit',$row->id)}}">
+                                                <button class="btn btn-warning waves-effect waves-light"> <i class="fa fa-map-pin mr-1"></i> <span>تعديل</span> </button>
                                             </a>
-                                            <a href="{{route('admin.user.edit',$row->id)}}">
-                                                <button class="btn btn-warning waves-effect waves-light"> <i class="fa fa-pen mr-1"></i> <span>edit</span> </button>
-                                            </a>
-                                            @if($row->banned==0)
-                                                <form class="ban" data-id="{{$row->id}}" method="POST" action="{{ route('admin.user.ban',[$row->id]) }}">
+                                            @if($row->status==1)
+                                                <form class="ban" data-id="{{$row->id}}" method="POST" action="{{route('admin.'.$class.'.ban',$row->id)}}">
                                                     @csrf
                                                     {{ method_field('POST') }}
                                                     <button class="btn btn-danger waves-effect waves-light"> <i class="fa fa-archive mr-1"></i> <span>حظر</span> </button>
                                                 </form>
                                             @else
-                                                <form class="activate" data-id="{{$row->id}}" method="POST" action="{{ route('admin.user.activate',[$row->id]) }}">
+                                                <form class="activate" data-id="{{$row->id}}" method="POST" action="{{route('admin.'.$class.'.activate',$row->id)}}">
                                                     @csrf
                                                     {{ method_field('POST') }}
                                                     <button class="btn btn-success waves-effect waves-light"> <i class="fa fa-user-clock mr-1"></i> <span>تفعيل</span> </button>

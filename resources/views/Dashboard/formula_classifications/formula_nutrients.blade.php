@@ -1,5 +1,5 @@
 @extends('Dashboard.layouts.master')
-@section('title', 'Formula Classifications')
+@section('title', 'Formula Nutrients')
 @section('styles')
     <link href="{{asset('assets/libs/datatables/dataTables.bootstrap4.css')}}" rel="stylesheet" type="text/css" />
     <link href="{{asset('assets/libs/datatables/responsive.bootstrap4.css')}}" rel="stylesheet" type="text/css" />
@@ -12,7 +12,7 @@
             <div class="row">
                 <div class="col-12">
                     <div class="card-box">
-                        <a href="#">
+                        <a href="{{route('admin.formula_content.create_formula_nutrient')}}">
                             <button type="button" class="btn btn-block btn-sm btn-success waves-effect waves-light">إضافة +</button>
                         </a>
                         <table id="datatable-buttons" class="table table-striped table-bordered dt-responsive nowrap">
@@ -36,6 +36,9 @@
                                     </td>
                                     <td>
                                         <div class="button-list">
+                                            <a href="{{route('admin.formula_content.edit_formula_nutrient',$row->id)}}">
+                                                <button class="btn btn-warning waves-effect waves-light"> <i class="fa fa-map-pin mr-1"></i> <span>تعديل</span> </button>
+                                            </a>
                                             @if($row->status==1)
                                                 <form class="ban" data-id="{{$row->id}}" method="POST" action="{{ route('admin.formula_content.ban_classification',[$row->id]) }}">
                                                     @csrf

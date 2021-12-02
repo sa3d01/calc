@@ -17,6 +17,8 @@ class DropDown extends Model
         'name',
         'image',
         'parent_id',
+        'stress_factor_from',
+        'stress_factor_to',
     ];
     public function parent():object
     {
