@@ -19,6 +19,7 @@ class DropDown extends Model
         'parent_id',
         'stress_factor_from',
         'stress_factor_to',
+        'iso_code'
     ];
     public function parent():object
     {

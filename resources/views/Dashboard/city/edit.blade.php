@@ -24,6 +24,10 @@
                                 <label for="name">الإسم*</label>
                                 <input value="{{$city->name}}" type="text" name="name" required class="form-control" id="name">
                             </div>
+                            <div class="form-group">
+                                <label for="iso_code">ISO CODE*</label>
+                                <input value="{{$city->iso_code}}" type="text" name="iso_code" required class="form-control" id="iso_code">
+                            </div>
                             <div class="form-group text-right mb-0">
                                 <button class="btn btn-primary waves-effect waves-light mr-1" type="submit">
                                     تعديل

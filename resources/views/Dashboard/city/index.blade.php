@@ -19,6 +19,7 @@
                             <thead>
                             <tr>
                                 <th>الإسم</th>
+                                <th>iso code</th>
                                 <th>العمليات المتاحة</th>
                             </tr>
                             </thead>
@@ -26,6 +27,7 @@
                             @foreach($rows as $row)
                                 <tr>
                                     <td>{{$row->name}}</td>
+                                    <td>{{$row->iso_code}}</td>
                                     <td>
                                         <div class="button-list">
                                             @if($row->status==1)

@@ -23,7 +23,8 @@ class DropDownController extends MasterController
     }
     public function cities()
     {
-        return $this->sendResponse(new DropDownCollection($this->model->whereClass('City')->whereStatus(1)->get()));
+        $cities=$this->model->whereClass('City')->where('iso_code',\request()->input('iso_code','SA'));
+        return $this->sendResponse(new DropDownCollection($cities->whereStatus(1)->get()));
     }
     public function uploadCities(Request $request)
     {
