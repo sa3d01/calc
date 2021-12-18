@@ -18,11 +18,11 @@ class DropDownController extends MasterController
 
     public function formulaNutrientsClassifications():object
     {
-        return $this->sendResponse(new DropDownCollection($this->model->whereClass('FormulaNutrientsClassification')->where('parent_id',null)->get()));
+        return $this->sendResponse(new DropDownCollection($this->model->whereClass('FormulaNutrientsClassification')->whereStatus(1)->where('parent_id',null)->get()));
     }
     public function tubeFeedings($id):object
     {
-        return $this->sendResponse(new DropDownCollection($this->model->whereClass('FormulaNutrients')->where('parent_id',$id)->get()));
+        return $this->sendResponse(new DropDownCollection($this->model->whereClass('FormulaNutrients')->whereStatus(1)->where('parent_id',$id)->get()));
     }
 
 }

@@ -23,11 +23,11 @@ class LaboratoryTestController extends MasterController
 
     public function types():object
     {
-        return $this->sendResponse(new DropDownCollection(DropDown::where('class','LapTest')->where('parent_id',null)->get()));
+        return $this->sendResponse(new DropDownCollection(DropDown::where('class','LapTest')->whereStatus(1)->where('parent_id',null)->get()));
     }
     public function factors($id):object
     {
-        return $this->sendResponse(new DropDownCollection(DropDown::whereClass('Factor')->where('parent_id',$id)->get()));
+        return $this->sendResponse(new DropDownCollection(DropDown::whereClass('Factor')->whereStatus(1)->where('parent_id',$id)->get()));
     }
     public function calc(Request $request)
     {

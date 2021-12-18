@@ -19,7 +19,7 @@ class CaloriesIntakeController extends MasterController
 
     public function ClinicalStatus(): object
     {
-        return $this->sendResponse(new DropDownCollection(DropDown::whereClass('ClinicalStatus')->where('parent_id', null)->get()));
+        return $this->sendResponse(new DropDownCollection(DropDown::whereClass('ClinicalStatus')->where('parent_id', null)->whereStatus(1)->get()));
     }
     function BMRForMen($weight,$height,$age):int
     {

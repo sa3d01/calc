@@ -21,7 +21,7 @@ class NutrientFactorController extends MasterController
 
     public function nutrients(): object
     {
-        return $this->sendResponse(new DropDownCollection(DropDown::where('class', 'Nutrient')->where('parent_id', null)->get()));
+        return $this->sendResponse(new DropDownCollection(DropDown::where('class', 'Nutrient')->whereStatus(1)->where('parent_id', null)->get()));
     }
 
     public function drugs(): object
@@ -46,7 +46,7 @@ class NutrientFactorController extends MasterController
         if ($request->has('drug_id')){
             $drug_id=$request['drug_id'];
         }else{
-            $drug=DropDown::whereClass('Drug')->where('name','LIKE','%'.$request['drug_name'].'%')->first();
+            $drug=DropDown::whereClass('Drug')->where('name','LIKE','%'.$request['drug_name'].'%')->whereStatus(1)->first();
             if (!$drug){
                 return $this->sendError('no data');
             }
