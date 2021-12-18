@@ -33,6 +33,38 @@
                                     <label for="stress_factor_to">stress factor to</label>
                                     <input value="{{$row->stress_factor_to}}" type="text" name="stress_factor_to" required class="form-control" id="stress_factor_to">
                                 </div>
+                            @elseif($class=="Drug")
+                                <div class="form-group">
+                                    <label for="parent_id">Nutrient*</label>
+                                    <select name="parent_id" required class="form-control" id="parent_id">
+                                        @foreach(\App\Models\DropDown::where('class','Nutrient')->latest()->get() as $Classification)
+                                            <option @if($row->parent_id==$Classification->id) selected @endif value="{{$Classification->id}}">{{$Classification->name}}</option>
+                                        @endforeach
+                                    </select>
+                                </div>
+                                @if(count($nutrient_factors)==0)
+                                    <div class="form-group">
+                                        <label>nutrient factor 1</label>
+                                        <input type="text" class="form-control" name="nutrient_factors[]">
+                                        <input type="button" value="+" onClick="addInput();">
+                                    </div>
+                                @else
+                                    @foreach($nutrient_factors as $nutrient_factor)
+                                        <div class="form-group">
+                                            <label>nutrient factor {{$loop->iteration}}</label>
+                                            <input value="{{$nutrient_factor->result}}" type="text" class="form-control" name="nutrient_factors[]">
+                                        </div>
+                                    @endforeach
+                                @endif
+                            @elseif($class=="Factor")
+                                <div class="form-group">
+                                    <label for="parent_id">LapTest*</label>
+                                    <select name="parent_id" required class="form-control" id="parent_id">
+                                        @foreach(\App\Models\DropDown::where('class','LapTest')->latest()->get() as $Classification)
+                                            <option @if($row->parent_id==$Classification->id) selected @endif value="{{$Classification->id}}">{{$Classification->name}}</option>
+                                        @endforeach
+                                    </select>
+                                </div>
                             @endif
                             <div class="form-group text-right mb-0">
                                 <button class="btn btn-primary waves-effect waves-light mr-1" type="submit">
@@ -89,4 +121,19 @@
     <script src="{{asset('assets/libs/parsleyjs/parsley.min.js')}}"></script>
     <!-- validation init -->
     <script src="{{asset('assets/js/pages/form-validation.init.js')}}"></script>
+    <script>
+        function addInput(){
+            var newdiv = document.createElement('div');
+            newdiv.className = 'form-group';
+            var new_id = $('input[name*="nutrient_factors"]').length +1;
+            newdiv.innerHTML = "<label>nutrient factor "+new_id+"</label> <input type='text' class='form-control' name='nutrient_factors[]'>" +
+                " <input type='button' value='-' onClick='removeInput(this);'>";
+            document.getElementById('formulario').appendChild(newdiv);
+        }
+
+        function removeInput(btn){
+            btn.parentNode.remove();
+        }
+
+    </script>
 @endsection

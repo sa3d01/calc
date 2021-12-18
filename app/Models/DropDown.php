@@ -25,4 +25,8 @@ class DropDown extends Model
     {
         return $this->belongsTo(DropDown::class,'parent_id','id');
     }
+    public function nutrient_factors():object
+    {
+        return $this->hasMany(NutrientFactor::class,'drug_id','id');
+    }
 }

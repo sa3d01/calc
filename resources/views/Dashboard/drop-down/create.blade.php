@@ -17,7 +17,7 @@
                         </div>
                     @endif
                     <div class="card-box">
-                        <form method="POST" action="{{route('admin.'.$class.'.store')}}" enctype="multipart/form-data" data-parsley-validate novalidate>
+                        <form method="POST" id="formulario" action="{{route('admin.'.$class.'.store')}}" enctype="multipart/form-data" data-parsley-validate novalidate>
                             @csrf
                             @method('POST')
                             <input hidden name="class" value="{{$class}}">
@@ -34,6 +34,29 @@
                                     <label for="stress_factor_to">stress factor to</label>
                                     <input type="text" name="stress_factor_to" required class="form-control" id="stress_factor_to">
                                 </div>
+                            @elseif($class==="Drug")
+                                <div class="form-group">
+                                    <label for="parent_id">Nutrient*</label>
+                                    <select name="parent_id" required class="form-control" id="parent_id">
+                                        @foreach(\App\Models\DropDown::where('class','Nutrient')->latest()->get() as $Classification)
+                                            <option value="{{$Classification->id}}">{{$Classification->name}}</option>
+                                        @endforeach
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label>nutrient factor 1</label>
+                                    <input type="text" class="form-control" name="nutrient_factors[]">
+                                    <input type="button" value="+" onClick="addInput();">
+                                </div>
+                            @elseif($class=="Factor")
+                                <div class="form-group">
+                                    <label for="parent_id">LapTest*</label>
+                                    <select name="parent_id" required class="form-control" id="parent_id">
+                                        @foreach(\App\Models\DropDown::where('class','LapTest')->latest()->get() as $Classification)
+                                            <option value="{{$Classification->id}}">{{$Classification->name}}</option>
+                                        @endforeach
+                                    </select>
+                                </div>
                             @endif
                             <div class="form-group text-right mb-0">
                                 <button class="btn btn-primary waves-effect waves-light mr-1" type="submit">
@@ -49,6 +72,7 @@
 @endsection
 @section('script')
     <script src="{{asset('assets/libs/dropify/dist/js/dropify.min.js')}}"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
     <script>
         $(document).ready(function() {
             // Basic
@@ -85,7 +109,21 @@
             })
         });
     </script>
+    <script>
+        function addInput(){
+            var newdiv = document.createElement('div');
+            newdiv.className = 'form-group';
+            var new_id = $('input[name*="nutrient_factors"]').length +1;
+            newdiv.innerHTML = "<label>nutrient factor "+new_id+"</label> <input type='text' class='form-control' name='nutrient_factors[]'>" +
+                " <input type='button' value='-' onClick='removeInput(this);'>";
+            document.getElementById('formulario').appendChild(newdiv);
+        }
 
+        function removeInput(btn){
+            btn.parentNode.remove();
+        }
+
+    </script>
     <!-- Validation js (Parsleyjs) -->
     <script src="{{asset('assets/libs/parsleyjs/parsley.min.js')}}"></script>
     <!-- validation init -->

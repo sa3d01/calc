@@ -41,6 +41,12 @@
                         <li>
                             <a href="{{route('admin.formula_content.formula_nutrients')}}">tube feeding formula</a>
                         </li>
+                        <li>
+                            <a href="{{route('admin.formula_nutrient.index')}}">formula nutrients</a>
+                        </li>
+                        <li>
+                            <a href="{{route('admin.Nutrient.index')}}">nutrients</a>
+                        </li>
 
                     </ul>
                 </li>
@@ -51,6 +57,29 @@
                     <ul class="nav-third-level nav" aria-expanded="false">
                         <li>
                             <a href="{{route('admin.ClinicalStatus.index')}}">Clinical Status</a>
+                        </li>
+                    </ul>
+                </li>
+{{--                <li>--}}
+{{--                    <a href="javascript: void(0);" aria-expanded="false">LapTest--}}
+{{--                        <span class="menu-arrow"></span>--}}
+{{--                    </a>--}}
+{{--                    <ul class="nav-third-level nav" aria-expanded="false">--}}
+{{--                        <li>--}}
+{{--                            <a href="{{route('admin.LapTest.index')}}">LapTest</a>--}}
+{{--                        </li>--}}
+{{--                    </ul>--}}
+{{--                </li>--}}
+                <li>
+                    <a href="javascript: void(0);" aria-expanded="false">Factors & Drugs
+                        <span class="menu-arrow"></span>
+                    </a>
+                    <ul class="nav-third-level nav" aria-expanded="false">
+                        <li>
+                            <a href="{{route('admin.Factor.index')}}">Factors</a>
+                        </li>
+                        <li>
+                            <a href="{{route('admin.Drug.index')}}">drugs</a>
                         </li>
                     </ul>
                 </li>

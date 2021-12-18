@@ -1,5 +1,5 @@
 @extends('Dashboard.layouts.master')
-@section('title', $class)
+@section('title', 'Formula Nutrients')
 @section('styles')
     <link href="{{asset('assets/libs/datatables/dataTables.bootstrap4.css')}}" rel="stylesheet" type="text/css" />
     <link href="{{asset('assets/libs/datatables/responsive.bootstrap4.css')}}" rel="stylesheet" type="text/css" />
@@ -12,68 +12,50 @@
             <div class="row">
                 <div class="col-12">
                     <div class="card-box">
-                        <a href="{{route('admin.'.$class.'.create')}}">
+                        <a href="{{route('admin.formula_nutrient.create')}}">
                             <button type="button" class="btn btn-block btn-sm btn-success waves-effect waves-light">إضافة +</button>
                         </a>
                         <table id="datatable-buttons" class="table table-striped table-bordered dt-responsive nowrap">
                             <thead>
                             <tr>
-                                <th>name</th>
-                                @if($class==="ClinicalStatus")
-                                    <th>stress factor from</th>
-                                    <th>stress factor to</th>
-                                @elseif($class=="Drug")
-                                    <th>results</th>
-                                @endif
-                                @if($class!="Nutrient" && $class!="ClinicalStatus")
-                                <th>Parent</th>
-                                @endif
-                                <th>status</th>
+                                <th>tube feeding</th>
+                                <th>volume</th>
+                                <th>k_cal</th>
+                                <th>cho_g</th>
+                                <th>protein_g</th>
+                                <th>fat_g</th>
+                                <th>na_mg</th>
+                                <th>k_mg</th>
+                                <th>p_mg</th>
+                                <th>fiber_g</th>
+                                <th>water_mL</th>
+                                <th>mosm</th>
                                 <th>العمليات المتاحة</th>
                             </tr>
                             </thead>
                             <tbody>
                             @foreach($rows as $row)
+                                @if($row->tubeFeeding==null)
+                                    @continue
+                                @endif
                                 <tr>
-                                    <td>{{$row->name}}</td>
-                                    @if($class==="ClinicalStatus")
-                                        <td>{{$row->stress_factor_from}}</td>
-                                        <td>{{$row->stress_factor_to}}</td>
-                                    @elseif($class=="Drug")
-                                        <td>
-                                            @foreach($row->nutrient_factors as $nutrient_factor)
-                                                <b>{{$nutrient_factor->result}}</b><br>
-                                            @endforeach
-                                        </td>
-                                    @endif
-                                    @if($class!="Nutrient" && $class!="ClinicalStatus")
-                                    <td>
-                                        {{$row->parent?$row->parent->name:""}}
-                                    </td>
-                                    @endif
-                                    <td>
-                                        <span class="badge @if($row->status==1) badge-success @else badge-danger @endif">
-                                            {{$row->status==1?'مفعل':'غير مفعل'}}
-                                        </span>
-                                    </td>
+                                    <td>{{$row->tubeFeeding->name}}</td>
+                                    <td>{{$row->volume}}</td>
+                                    <td>{{$row->k_cal}}</td>
+                                    <td>{{$row->cho_g}}</td>
+                                    <td>{{$row->protein_g}}</td>
+                                    <td>{{$row->fat_g}}</td>
+                                    <td>{{$row->na_mg}}</td>
+                                    <td>{{$row->k_mg}}</td>
+                                    <td>{{$row->p_mg}}</td>
+                                    <td>{{$row->fiber_g}}</td>
+                                    <td>{{$row->water_mL}}</td>
+                                    <td>{{$row->mosm}}</td>
                                     <td>
                                         <div class="button-list">
-                                            <a href="{{route('admin.'.$class.'.edit',$row->id)}}">
+                                            <a href="{{route('admin.formula_nutrient.edit',$row->id)}}">
                                                 <button class="btn btn-warning waves-effect waves-light"> <i class="fa fa-map-pin mr-1"></i> <span>تعديل</span> </button>
                                             </a>
-                                            @if($row->status==1)
-                                                <form class="ban" data-id="{{$row->id}}" method="POST" action="{{route('admin.'.$class.'.ban',$row->id)}}">
-                                                    @csrf
-                                                    {{ method_field('POST') }}
-                                                    <button class="btn btn-danger waves-effect waves-light"> <i class="fa fa-archive mr-1"></i> <span>حظر</span> </button>
-                                                </form>
-                                            @else
-                                                <form class="activate" data-id="{{$row->id}}" method="POST" action="{{route('admin.'.$class.'.activate',$row->id)}}">
-                                                    @csrf
-                                                    {{ method_field('POST') }}
-                                                    <button class="btn btn-success waves-effect waves-light"> <i class="fa fa-user-clock mr-1"></i> <span>تفعيل</span> </button>
-                                                </form>
-                                            @endif
                                         </div>
                                     </td>
                                 </tr>

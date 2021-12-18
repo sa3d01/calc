@@ -64,7 +64,7 @@ Route::prefix('/admin')->name('admin.')->namespace('App\Http\Controllers\Admin')
 
     Route::post('/formula-content-classifications/{id}/ban', 'FormulaContentOfNutrientsController@ban')->name('formula_content.ban_classification');
     Route::post('/formula-content-classifications/{id}/activate', 'FormulaContentOfNutrientsController@activate')->name('formula_content.activate_classification');
-//formula_nutrients
+//formula_nutrient_drop_downs
     Route::get('/formula_nutrients', 'FormulaContentOfNutrientsController@formula_nutrients')->name('formula_content.formula_nutrients');
     Route::post('/formula_nutrients/{id}/ban', 'FormulaContentOfNutrientsController@ban_formula_nutrients')->name('formula_content.ban_formula_nutrient');
     Route::post('/formula_nutrients/{id}/activate', 'FormulaContentOfNutrientsController@activate_formula_nutrients')->name('formula_content.activate_formula_nutrient');
@@ -77,5 +77,23 @@ Route::prefix('/admin')->name('admin.')->namespace('App\Http\Controllers\Admin')
     Route::post('/ClinicalStatus/{id}/ban', 'ClinicalStatusController@ban')->name('ClinicalStatus.ban');
     Route::post('/ClinicalStatus/{id}/activate', 'ClinicalStatusController@activate')->name('ClinicalStatus.activate');
     Route::resource('ClinicalStatus', 'ClinicalStatusController');
+//formula_nutrient
+    Route::resource('formula_nutrient', 'FormulaNutrientController');
+//nutrient
+    Route::post('/Nutrient/{id}/ban', 'NutrientController@ban')->name('Nutrient.ban');
+    Route::post('/Nutrient/{id}/activate', 'NutrientController@activate')->name('Nutrient.activate');
+    Route::resource('Nutrient', 'NutrientController');
+//factor
+    Route::post('/Factor/{id}/ban', 'FactorController@ban')->name('Factor.ban');
+    Route::post('/Factor/{id}/activate', 'FactorController@activate')->name('Factor.activate');
+    Route::resource('Factor', 'FactorController');
+//drug
+    Route::post('/Drug/{id}/ban', 'DrugController@ban')->name('Drug.ban');
+    Route::post('/Drug/{id}/activate', 'DrugController@activate')->name('Drug.activate');
+    Route::resource('Drug', 'DrugController');
+//LapTest
+    Route::post('/LapTest/{id}/ban', 'LapTestController@ban')->name('LapTest.ban');
+    Route::post('/LapTest/{id}/activate', 'LapTestController@activate')->name('LapTest.activate');
+    Route::resource('LapTest', 'LapTestController');
 
 });
