@@ -27,7 +27,7 @@
                             @foreach($rows as $row)
                                 <tr>
                                     <td>{{$row->name}}</td>
-                                    <td>{{\App\Models\DropDown::where(['class'=>'Country','iso_code'=>$rowiso_code])->value('name')}}</td>
+                                    <td>{{\App\Models\DropDown::where(['class'=>'Country','iso_code'=>$row->iso_code])->value('name')}}</td>
                                     <td>
                                         <div class="button-list">
                                             @if($row->status==1)
