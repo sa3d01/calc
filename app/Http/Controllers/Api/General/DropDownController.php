@@ -6,6 +6,7 @@ use App\Http\Controllers\Api\MasterController;
 use App\Http\Resources\DropDownCollection;
 use App\Imports\ClinicalStatusImport;
 use App\Imports\CitiesImport;
+use App\Imports\CountriesImport;
 use App\Imports\DrugsImport;
 use App\Imports\FormulaNutrientsImport;
 use App\Imports\LapTestsImport;
@@ -29,6 +30,11 @@ class DropDownController extends MasterController
     public function uploadCities(Request $request)
     {
         Excel::import(new CitiesImport(), $request->file('excel'));
+        return redirect()->back()->with('success', 'All good!');
+    }
+    public function uploadCountries(Request $request)
+    {
+        Excel::import(new CountriesImport(), $request->file('excel'));
         return redirect()->back()->with('success', 'All good!');
     }
     public function uploadClinicalStatus(Request $request)

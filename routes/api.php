@@ -44,6 +44,7 @@ Route::group([
         Route::post('upload-drugs','DropDownController@uploadDrugs');
         Route::post('upload-formula-nutrients','DropDownController@uploadFormulanutrients');
         Route::post('upload-lap-tests','DropDownController@uploadLapTests');
+        Route::post('upload-countries','DropDownController@uploadCountries');
         Route::post('upload-cities','DropDownController@uploadCities');
     });
     //Home
