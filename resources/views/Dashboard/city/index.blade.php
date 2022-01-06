@@ -15,6 +15,48 @@
                         <a href="{{route('admin.city.create')}}">
                             <button type="button" class="btn btn-block btn-sm btn-success waves-effect waves-light">إضافة مدينة</button>
                         </a>
+                        <a style='cursor: pointer' data-toggle='modal' data-target='#uploadExcelModal' class='nav-link'><i class="fa fa-upload text-danger"></i>إضافة مدن لدولة محددة</a>
+                        <div class="modal fade" id="uploadExcelModal" tabindex="-1" role="dialog" aria-labelledby="uploadExcelModal" aria-hidden="true">
+                            <div class="modal-dialog" role="document">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title">قم بإضافة ملف إكسيل وتحديد الدولة</h5>
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                            <span aria-hidden="true">×</span>
+                                        </button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <form enctype="multipart/form-data" method="POST" action="{{ route('admin.city.upload-excel') }}">
+                                            @csrf
+                                            <div class="form-group row">
+                                                <label for="iso_code">Country*</label>
+                                                <select name="iso_code" required class="form-control" id="iso_code">
+                                                    @foreach(\App\Models\DropDown::where('class','Country')->latest()->get() as $Classification)
+                                                        <option value="{{$Classification->iso_code}}">{{$Classification->name}}</option>
+                                                    @endforeach
+                                                </select>
+                                            </div>
+                                            <div class="form-group row">
+                                                <label for="file" class="col-md-4 col-form-label text-md-right">الملف</label>
+                                                <div class="col-md-6">
+                                                    <input autofocus required class="upload form-control" id="uploadFile" type="file" name="excel" />
+                                                </div>
+                                            </div>
+                                            <div class="form-group row mb-0">
+                                                <div class="col-md-8 offset-md-4">
+                                                    <button type="submit" class="btn btn-primary">
+                                                        UPLOAD
+                                                    </button>
+                                                </div>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+
+
                         <table id="datatable-buttons" class="table table-striped table-bordered dt-responsive nowrap">
                             <thead>
                             <tr>

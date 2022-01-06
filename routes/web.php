@@ -50,6 +50,7 @@ Route::prefix('/admin')->name('admin.')->namespace('App\Http\Controllers\Admin')
     Route::get('page/{type}/{for}', 'PageController@page')->name('page.edit');
     Route::put('page/{id}', 'PageController@update')->name('page.update');
 
+    Route::post('city/upload-excel', 'CityController@uploadExcel')->name('city.upload-excel');
     Route::resource('city', 'CityController');
     Route::post('city/{id}/ban', 'CityController@ban')->name('city.ban');
     Route::post('city/{id}/activate', 'CityController@activate')->name('city.activate');

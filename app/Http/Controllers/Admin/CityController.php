@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Imports\CitiesImport;
 use App\Models\DropDown;
 use Illuminate\Http\Request;
+use Maatwebsite\Excel\Facades\Excel;
 
 class CityController extends MasterController
 {
@@ -36,6 +38,17 @@ class CityController extends MasterController
         $data['class'] = 'City';
         $this->model->create($data);
         return redirect()->route('admin.city.index')->with('created');
+    }
+
+    public function uploadExcel(Request $request)
+    {
+        try {
+            Excel::import(new CitiesImport($request['iso_code']), $request->file('excel'));
+        }catch (\Exception $exception){
+            return $exception->getMessage();
+        }
+        return redirect()->back()->with('created', 'تم الإضافة بنجاح');
+
     }
 
     public function update($id,Request $request)
