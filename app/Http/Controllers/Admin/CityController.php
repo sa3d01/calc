@@ -47,8 +47,7 @@ class CityController extends MasterController
         }catch (\Exception $exception){
             return $exception->getMessage();
         }
-        return redirect()->back()->with('created', 'تم الإضافة بنجاح');
-
+        return redirect()->route('admin.city.index')->with('created');
     }
 
     public function update($id,Request $request)
