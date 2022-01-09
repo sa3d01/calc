@@ -28,7 +28,7 @@ class UserRegisterationRequest extends ApiMasterRequest
             'name' => 'required|string|max:110',
             'email' => 'nullable|email:rfc,dns|max:90|unique:users',
             'phone' => 'required|max:90|unique:users',
-            'phone_country_label' => 'nullable|max:90',
+            'mobile_country_label' => 'nullable|max:90',
             'password' => 'required|string|min:6|max:15',
             'city_id' => 'required|numeric|exists:drop_downs,id',
             'device.id' => 'required',

@@ -56,9 +56,9 @@ class NotificationController extends MasterController
         }
         $push = new PushNotification('fcm');
         $push->setMessage([
-            'notification' => array('title'=>$data['note'],'body' => $data['note'], 'sound' => 'default'),
+            'notification' => array('title'=>'admin message','body' => $data['note'], 'sound' => 'default'),
             'data' => [
-                'title' => $data['note'],
+                'title' => 'admin message',
                 'body' => $data['note'],
                 'status' => 'admin',
                 'type'=>'admin',
@@ -70,7 +70,7 @@ class NotificationController extends MasterController
         $this->model->create([
             'receivers'=>$usersIds,
             'admin_notify_type'=>'all',
-            'title'=>$data['note'],
+            'title'=>'admin message',
             'note'=>$data['note'],
         ]);
         return redirect()->back()->with('success','تم الارسال بنجاح');
@@ -83,9 +83,9 @@ class NotificationController extends MasterController
         $data['note']=$request['note'];
         $push = new PushNotification('fcm');
         $push->setMessage([
-            'notification' => array('title'=>$data['note'],'body' => $data['note'], 'sound' => 'default'),
+            'notification' => array('title'=>$data['title'],'body' => $data['note'], 'sound' => 'default'),
             'data' => [
-                'title' => $data['note'],
+                'title' => $data['title'],
                 'body' => $data['note'],
                 'status' => 'admin',
                 'type'=>'admin',
