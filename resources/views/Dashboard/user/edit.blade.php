@@ -25,6 +25,24 @@
                                 <input value="{{$row->name}}" type="text" name="name" required class="form-control" id="name">
                             </div>
                             <div class="form-group">
+                                <label for="phone">phone*</label>
+                                <input value="{{$row->phone}}" type="text" name="phone" required class="form-control" id="phone">
+                            </div>
+                            <div class="form-group">
+                                <label for="email">email*</label>
+                                <input value="{{$row->email}}" type="text" name="email" required class="form-control" id="email">
+                            </div>
+                            <div class="form-group">
+                                <label for="pass1">كلمة المرور*</label>
+                                <input id="pass1" type="password" name="password" placeholder="Password"
+                                       class="form-control">
+                            </div>
+                            <div class="form-group">
+                                <label for="passWord2">تأكيد كلمة المرور *</label>
+                                <input data-parsley-equalto="#pass1" type="password"
+                                       placeholder="Password" class="form-control" id="passWord2">
+                            </div>
+                            <div class="form-group">
                                 <label for="parent_id">City*</label>
                                 <select name="city_id" required class="form-control" id="city_id">
                                     @foreach(\App\Models\DropDown::where('class','City')->latest()->get() as $city)

@@ -32,14 +32,14 @@ class ContactController extends MasterController
 
     public function replyContact($id, Request $request)
     {
-        $data['title'] = 'رسالة إدارية';
+        $data['title']='admin message';
         $data['note'] = $request['note'];
         $contact = Contact::find($id);
         $push = new PushNotification('fcm');
         $push->setMessage([
-            'notification' => array('title' => $data['note'], 'sound' => 'default'),
+            'notification' => array('title'=>$data['title'],'body' => $data['note'], 'sound' => 'default'),
             'data' => [
-                'title' => $data['note'],
+                'title' => $data['title'],
                 'body' => $data['note'],
                 'status' => 'admin',
                 'type' => 'admin',
