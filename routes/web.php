@@ -93,8 +93,6 @@ Route::prefix('/admin')->name('admin.')->namespace('App\Http\Controllers\Admin')
     Route::post('/Drug/{id}/activate', 'DrugController@activate')->name('Drug.activate');
     Route::resource('Drug', 'DrugController');
 //LapTest
-    Route::post('/LapTest/{id}/ban', 'LapTestController@ban')->name('LapTest.ban');
-    Route::post('/LapTest/{id}/activate', 'LapTestController@activate')->name('LapTest.activate');
     Route::resource('LapTest', 'LapTestController');
 
 });

@@ -11,5 +11,11 @@ class LapTest extends Model
     protected $fillable = [
         'factor_id',
         'result',
+        'up',
+        'down'
     ];
+    public function factor()
+    {
+        return $this->belongsTo(DropDown::class,'factor_id','id');
+    }
 }
