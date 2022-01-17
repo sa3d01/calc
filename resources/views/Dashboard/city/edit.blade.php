@@ -28,7 +28,7 @@
                                 <label for="iso_code">Country*</label>
                                 <select name="iso_code" required class="form-control" id="iso_code">
                                     @foreach(\App\Models\DropDown::where('class','Country')->latest()->get() as $Classification)
-                                        <option @if($row->iso_code==$Classification->iso_code) selected @endif value="{{$Classification->iso_code}}">{{$Classification->name}}</option>
+                                        <option @if($city->iso_code==$Classification->iso_code) selected @endif value="{{$Classification->iso_code}}">{{$Classification->name}}</option>
                                     @endforeach
                                 </select>
                             </div>
