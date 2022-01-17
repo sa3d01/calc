@@ -44,7 +44,7 @@ class PreparePhone
     {
         $this->isValid = $this->phoneUtil->isValidNumber($parsedPhoneNumber);
         if ($this->isValid == false) {
-            $this->errorMsg = 'يجب أن يكون رقم الجوال سعودى';
+            $this->errorMsg = 'the selected phone is invalid';
         }
     }
 
