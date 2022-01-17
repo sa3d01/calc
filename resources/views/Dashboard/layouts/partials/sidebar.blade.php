@@ -66,18 +66,18 @@
                     </a>
                     <ul class="nav-third-level nav" aria-expanded="false">
                         <li>
+                            <a href="{{route('admin.Factor.index')}}">Factors</a>
+                        </li>
+                        <li>
                             <a href="{{route('admin.LapTest.index')}}">LapTest</a>
                         </li>
                     </ul>
                 </li>
                 <li>
-                    <a href="javascript: void(0);" aria-expanded="false">Factors & Drugs
+                    <a href="javascript: void(0);" aria-expanded="false"> Drugs
                         <span class="menu-arrow"></span>
                     </a>
                     <ul class="nav-third-level nav" aria-expanded="false">
-                        <li>
-                            <a href="{{route('admin.Factor.index')}}">Factors</a>
-                        </li>
                         <li>
                             <a href="{{route('admin.Drug.index')}}">drugs</a>
                         </li>
