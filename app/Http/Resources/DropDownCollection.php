@@ -18,6 +18,10 @@ class DropDownCollection extends ResourceCollection
         foreach ($this as $obj) {
             $arr['id'] = (int)$obj->id;
             $arr['name'] = $obj->name;
+            if($obj->class=="ClinicalStatus"){
+                $arr['stree_factor_from'] = $obj->stree_factor_from;
+                $arr['stree_factor_to'] = $obj->stree_factor_to;
+            }
             $data[] = $arr;
         }
         return $data;
