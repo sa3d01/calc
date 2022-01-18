@@ -19,8 +19,8 @@ class DropDownCollection extends ResourceCollection
             $arr['id'] = (int)$obj->id;
             $arr['name'] = $obj->name;
             if($obj->class=="ClinicalStatus"){
-                $arr['stree_factor_from'] = $obj->stree_factor_from;
-                $arr['stree_factor_to'] = $obj->stree_factor_to;
+                $arr['strees_factor_from'] = $obj->strees_factor_from;
+                $arr['strees_factor_to'] = $obj->strees_factor_to;
             }
             $data[] = $arr;
         }
