@@ -26,7 +26,7 @@ class NutrientFactorController extends MasterController
 
     public function drugs(): object
     {
-        $drugs_q=DropDown::whereClass('Drug');
+        $drugs_q=DropDown::whereClass('Drug')->whereStatus(1);
         if (\request()->input('drug')){
             $drugs_q=$drugs_q->where('name','LIKE','%'.\request()->input('drug').'%');
         }

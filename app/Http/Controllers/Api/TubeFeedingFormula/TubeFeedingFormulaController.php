@@ -60,7 +60,7 @@ class TubeFeedingFormulaController extends MasterController
         $validator = Validator::make($request->all(), [
             'classification_id' => 'required|exists:drop_downs,id',
             'tube_feeding_id' => 'required|exists:drop_downs,id',
-                'quantity' => 'nullable',
+            'quantity' => 'nullable',
         ]);
         if ($validator->fails()) {
             return $this->sendError($validator->errors()->first());
