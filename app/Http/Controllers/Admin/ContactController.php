@@ -35,6 +35,8 @@ class ContactController extends MasterController
         $data['title']='admin message';
         $data['note'] = $request['note'];
         $contact = Contact::find($id);
+
+        return (array)$contact->user->device['id'];
         $push = new PushNotification('fcm');
         $feedback=$push->setMessage([
             'notification' => array('title'=>$data['title'],'body' => $data['note'], 'sound' => 'default'),
