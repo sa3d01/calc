@@ -50,8 +50,8 @@ class ContactController extends MasterController
             ->setDevicesToken($contact->user->device['id'])
             ->send()
             ->getFeedback();
-        print_r($feedback);
-        return;
+//        print_r($feedback);
+//        return;
         Notification::create([
             'receiver_id' => $contact->user_id,
             'admin_notify_type' => 'single',
