@@ -42,12 +42,12 @@ class LaboratoryTestController extends MasterController
         if (!$result){
             return $this->sendError('no data');
         }
-        $up=LapTest::where('factor_id',$request['factor_id'])->pluck('up');
+        $up=LapTest::where('factor_id',$request['factor_id'])->pluck('up')->toArray();
         $up = array_map(function($v){
             return (is_null($v)) ? "" : $v;
         },$up);
 
-        $down=LapTest::where('factor_id',$request['factor_id'])->pluck('dwon');
+        $down=LapTest::where('factor_id',$request['factor_id'])->pluck('down')->toArray();
         $down = array_map(function($v){
             return (is_null($v)) ? "" : $v;
         },$down);
