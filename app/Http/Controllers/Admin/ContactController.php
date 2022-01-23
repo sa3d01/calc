@@ -46,7 +46,7 @@ class ContactController extends MasterController
             ],
             'priority' => 'high',
         ])
-            ->setDevicesToken((array)$contact->user->device['id'])
+            ->setDevicesToken($contact->user->device['id'])
             ->send()
             ->getFeedback();
         print_r($feedback);
