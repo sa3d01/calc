@@ -46,8 +46,8 @@ class LaboratoryTestController extends MasterController
             'status' => 200,
             'message' =>  '',
             'data' => LapTest::where('factor_id',$request['factor_id'])->pluck('result'),
-            'up'=>LapTest::where('factor_id',$request['factor_id'])->pluck('up'),
-            'down'=>LapTest::where('factor_id',$request['factor_id'])->pluck('down')
+            'up'=>LapTest::where('factor_id',$request['factor_id'])->pluck('up')->toString(),
+            'down'=>LapTest::where('factor_id',$request['factor_id'])->pluck('down')->toString()
         ];
         return response()->json($response);
     }
