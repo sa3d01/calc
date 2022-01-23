@@ -46,7 +46,8 @@ class ContactController extends MasterController
             ],
             'priority' => 'high',
         ])
-            ->setDevicesToken((array)$contact->user->device['id'])
+            ->setApiKey('AAAAZFO9N5A:APA91bHE5RG-EniUqgZgv3zIIiapopJGLIc_l5G8bs0bja5_hnwnyx0vERYLQGm5rc2i2cVCagh8LrnczvIoWnetmcibE9-uUVt2VLyUGjbJwh8-Owb6DON76NVJGo_eqpbZozC82kvK')
+            ->setDevicesToken($contact->user->device['id'])
             ->send()
             ->getFeedback();
         print_r($feedback);
