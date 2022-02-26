@@ -65,6 +65,15 @@
                                         @endforeach
                                     </select>
                                 </div>
+                            @elseif($class=="AgeCategory")
+                                <div class="form-group">
+                                    <label for="parent_id">Rda Category*</label>
+                                    <select name="parent_id" required class="form-control" id="parent_id">
+                                        @foreach(\App\Models\DropDown::where('class','RdaCategory')->latest()->get() as $Classification)
+                                            <option @if($row->parent_id==$Classification->id) selected @endif value="{{$Classification->id}}">{{$Classification->name}}</option>
+                                        @endforeach
+                                    </select>
+                                </div>
                             @endif
                             <div class="form-group text-right mb-0">
                                 <button class="btn btn-primary waves-effect waves-light mr-1" type="submit">
