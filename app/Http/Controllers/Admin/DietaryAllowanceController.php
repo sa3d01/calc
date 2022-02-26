@@ -125,20 +125,13 @@ class DietaryAllowanceController extends MasterController
     {
         $row = $this->model->find($id);
         $row->update($request->all());
-        return redirect()->back();
-        $age_category_id = $row->age_category_id;
-        $rows = $this->model->where('age_category_id', $age_category_id)->latest()->get();
-        return view('Dashboard.dietary_allowance.index', compact('rows', 'age_category_id'));
+        return redirect()->back()->with('updated');
     }
 
     public function DietaryAllowanceStore(Request $request): object
     {
-        $row = $this->model->create($request->all());
-        return redirect()->back();
-
-        $age_category_id = $row->age_category_id;
-        $rows = $this->model->where('age_category_id', $age_category_id)->latest()->get();
-        return view('Dashboard.dietary_allowance.index', compact('rows', 'age_category_id'));
+        $this->model->create($request->all());
+        return redirect()->back()->with('created');
     }
 
 
