@@ -104,8 +104,8 @@ Route::group([
         });
         //RDAController
         Route::group(['namespace' => 'RDA', 'prefix' => 'rda'], function () {
-            Route::get('categories', 'RdaController@categories');
-            Route::get('categories/{id}', 'RdaController@ages');
+            Route::get('category', 'RdaController@categories');
+            Route::get('category/{id}', 'RdaController@ages');
             Route::post('calc', 'RdaController@calc');
         });
     });
