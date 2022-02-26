@@ -94,5 +94,7 @@ Route::prefix('/admin')->name('admin.')->namespace('App\Http\Controllers\Admin')
     Route::resource('Drug', 'DrugController');
 //LapTest
     Route::resource('LapTest', 'LapTestController');
+//RDA
+    Route::resource('RdaCategories', 'RdaController');
 
 });

@@ -83,6 +83,16 @@
                         </li>
                     </ul>
                 </li>
+                <li>
+                    <a href="javascript: void(0);" aria-expanded="false"> RDA
+                        <span class="menu-arrow"></span>
+                    </a>
+                    <ul class="nav-third-level nav" aria-expanded="false">
+                        <li>
+                            <a href="{{route('admin.RdaCategories.index')}}">RDA Categories</a>
+                        </li>
+                    </ul>
+                </li>
             </ul>
         </li>
 
