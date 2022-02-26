@@ -91,6 +91,9 @@
                         <li>
                             <a href="{{route('admin.RdaCategory.index')}}">RDA Categories</a>
                         </li>
+                        <li>
+                            <a href="{{route('admin.AgeCategory.index')}}">Age Categories</a>
+                        </li>
                     </ul>
                 </li>
             </ul>

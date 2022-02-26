@@ -104,4 +104,10 @@ Route::prefix('/admin')->name('admin.')->namespace('App\Http\Controllers\Admin')
     Route::put('/RdaCategory/{id}/update', 'RdaController@updateRdaCategory')->name('RdaCategory.update');
     Route::post('/RdaCategory/store', 'RdaController@storeRdaCategory')->name('RdaCategory.store');
 
+    Route::get('/AgeCategory', 'RdaController@listAgeCategory')->name('AgeCategory.index');
+    Route::get('/AgeCategory/create', 'RdaController@createAgeCategory')->name('AgeCategory.create');
+    Route::get('/AgeCategory/{id}/edit', 'RdaController@editAgeCategory')->name('AgeCategory.edit');
+    Route::put('/AgeCategory/{id}/update', 'RdaController@updateAgeCategory')->name('AgeCategory.update');
+    Route::post('/AgeCategory/store', 'RdaController@storeAgeCategory')->name('AgeCategory.store');
+
 });
