@@ -73,7 +73,7 @@ class RdaController extends MasterController
         ];
         $data=[];
         foreach ($index_fields as $value){
-            $data[$value]=(float)$result->$value;
+            $data[$value]=(string)$result->$value;
         }
         return $this->sendResponse($data);
     }
