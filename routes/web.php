@@ -95,6 +95,8 @@ Route::prefix('/admin')->name('admin.')->namespace('App\Http\Controllers\Admin')
 //LapTest
     Route::resource('LapTest', 'LapTestController');
 //RDA
-    Route::resource('RdaCategories', 'RdaController');
+    Route::post('/RdaCategory/{id}/ban', 'RdaController@ban')->name('RdaCategory.ban');
+    Route::post('/RdaCategory/{id}/activate', 'RdaController@activate')->name('RdaCategory.activate');
+    Route::resource('RdaCategory', 'RdaController');
 
 });

@@ -89,7 +89,7 @@
                     </a>
                     <ul class="nav-third-level nav" aria-expanded="false">
                         <li>
-                            <a href="{{route('admin.RdaCategories.index')}}">RDA Categories</a>
+                            <a href="{{route('admin.RdaCategory.index')}}">RDA Categories</a>
                         </li>
                     </ul>
                 </li>
