@@ -13,24 +13,24 @@ class RdaController extends MasterController
         parent::__construct();
     }
 
-    public function index()
+    public function listRdaCategory()
     {
         $class="RdaCategory";
         $rows = $this->model->where('class', $class)->latest()->get();
         return view('Dashboard.drop-down.index', compact('rows','class'));
     }
-    public function create()
+    public function createRdaCategory()
     {
         $class="RdaCategory";
         return view('Dashboard.drop-down.create', compact('class'));
     }
-    public function edit($id)
+    public function editRdaCategory($id)
     {
         $row = $this->model->find($id);
         $class=$row->class;
         return view('Dashboard.drop-down.edit', compact('row','class'));
     }
-    public function update($id, Request $request): object
+    public function updateRdaCategory($id, Request $request): object
     {
         $row = $this->model->find($id);
         $row->update($request->all());
@@ -39,7 +39,7 @@ class RdaController extends MasterController
         return view('Dashboard.drop-down.index', compact('rows','class'));
     }
 
-    public function store(Request $request): object
+    public function storeRdaCategory(Request $request): object
     {
         $row=$this->model->create($request->all());
         $class=$row->class;

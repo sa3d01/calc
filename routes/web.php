@@ -97,6 +97,11 @@ Route::prefix('/admin')->name('admin.')->namespace('App\Http\Controllers\Admin')
 //RDA
     Route::post('/RdaCategory/{id}/ban', 'RdaController@ban')->name('RdaCategory.ban');
     Route::post('/RdaCategory/{id}/activate', 'RdaController@activate')->name('RdaCategory.activate');
-    Route::resource('RdaCategory', 'RdaController');
+
+    Route::get('/RdaCategory', 'RdaController@listRdaCategory')->name('RdaCategory.index');
+    Route::get('/RdaCategory/create', 'RdaController@createRdaCategory')->name('RdaCategory.create');
+    Route::get('/RdaCategory/{id}/edit', 'RdaController@editRdaCategory')->name('RdaCategory.edit');
+    Route::put('/RdaCategory/{id}/update', 'RdaController@updateRdaCategory')->name('RdaCategory.update');
+    Route::post('/RdaCategory/store', 'RdaController@storeRdaCategory')->name('RdaCategory.store');
 
 });
