@@ -117,6 +117,6 @@ Route::prefix('/admin')->name('admin.')->namespace('App\Http\Controllers\Admin')
     Route::get('/AgeCategory/{id}/DietaryAllowance/create', 'DietaryAllowanceController@DietaryAllowanceCreate')->name('DietaryAllowance.create');
     Route::get('/DietaryAllowance/{id}/edit', 'DietaryAllowanceController@DietaryAllowanceEdit')->name('DietaryAllowance.edit');
     Route::put('/DietaryAllowance/{id}/update', 'DietaryAllowanceController@DietaryAllowanceUpdate')->name('DietaryAllowance.update');
-    Route::post('/AgeCategory/{id}/DietaryAllowance/store', 'DietaryAllowanceController@DietaryAllowanceStore')->name('DietaryAllowance.store');
+    Route::post('/DietaryAllowance/store', 'DietaryAllowanceController@DietaryAllowanceStore')->name('DietaryAllowance.store');
 
 });
