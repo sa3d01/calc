@@ -98,6 +98,9 @@ Route::prefix('/admin')->name('admin.')->namespace('App\Http\Controllers\Admin')
     Route::post('/RdaCategory/{id}/ban', 'RdaController@ban')->name('RdaCategory.ban');
     Route::post('/RdaCategory/{id}/activate', 'RdaController@activate')->name('RdaCategory.activate');
 
+    Route::post('/AgeCategory/{id}/ban', 'RdaController@ban')->name('AgeCategory.ban');
+    Route::post('/AgeCategory/{id}/activate', 'RdaController@activate')->name('AgeCategory.activate');
+
     Route::get('/RdaCategory', 'RdaController@listRdaCategory')->name('RdaCategory.index');
     Route::get('/RdaCategory/create', 'RdaController@createRdaCategory')->name('RdaCategory.create');
     Route::get('/RdaCategory/{id}/edit', 'RdaController@editRdaCategory')->name('RdaCategory.edit');
