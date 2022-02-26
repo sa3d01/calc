@@ -25,7 +25,7 @@
                                 @elseif($class=="Drug")
                                     <th>results</th>
                                 @endif
-                                @if($class!="Nutrient" && $class!="ClinicalStatus")
+                                @if($class!="Nutrient" && $class!="ClinicalStatus" && $class!="RdaCategory")
                                 <th>Parent</th>
                                 @endif
                                 <th>status</th>
@@ -46,7 +46,7 @@
                                             @endforeach
                                         </td>
                                     @endif
-                                    @if($class!="Nutrient" && $class!="ClinicalStatus")
+                                    @if($class!="Nutrient" && $class!="ClinicalStatus" && $class!="RdaCategory")
                                     <td>
                                         {{$row->parent?$row->parent->name:""}}
                                     </td>
