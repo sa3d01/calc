@@ -113,6 +113,10 @@ Route::prefix('/admin')->name('admin.')->namespace('App\Http\Controllers\Admin')
     Route::put('/AgeCategory/{id}/update', 'RdaController@updateAgeCategory')->name('AgeCategory.update');
     Route::post('/AgeCategory/store', 'RdaController@storeAgeCategory')->name('AgeCategory.store');
 
-    Route::get('/AgeCategory/{id}/DietaryAllowance', 'RdaController@DietaryAllowance')->name('AgeCategory.DietaryAllowance');
+    Route::get('/AgeCategory/{id}/DietaryAllowance', 'DietaryAllowanceController@DietaryAllowance')->name('DietaryAllowance.index');
+    Route::get('/AgeCategory/{id}/DietaryAllowance/create', 'DietaryAllowanceController@DietaryAllowanceCreate')->name('DietaryAllowance.create');
+    Route::get('/DietaryAllowance/{id}/edit', 'DietaryAllowanceController@DietaryAllowanceEdit')->name('DietaryAllowance.edit');
+    Route::put('/DietaryAllowance/{id}/update', 'DietaryAllowanceController@DietaryAllowanceUpdate')->name('DietaryAllowance.update');
+    Route::post('/AgeCategory/{id}/DietaryAllowance/store', 'DietaryAllowanceController@DietaryAllowanceStore')->name('DietaryAllowance.store');
 
 });
