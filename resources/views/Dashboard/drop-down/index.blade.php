@@ -25,6 +25,9 @@
                                 @elseif($class=="Drug")
                                     <th>results</th>
                                 @endif
+                                @if($class=="AgeCategory")
+                                    <th>Dietary Allowances</th>
+                                @endif
                                 @if($class!="Nutrient" && $class!="ClinicalStatus" && $class!="RdaCategory")
                                 <th>Parent</th>
                                 @endif
@@ -44,6 +47,12 @@
                                             @foreach($row->nutrient_factors as $nutrient_factor)
                                                 <b>{{$nutrient_factor->result}}</b><br>
                                             @endforeach
+                                        </td>
+                                    @elseif($class=="AgeCategory")
+                                        <td>
+                                            <a href="{{route('admin.AgeCategory.DietaryAllowance',$row->id)}}">
+                                                <button class="btn btn-warning waves-effect waves-light"> <i class="fa fa-map-pin mr-1">{{\App\Models\DietaryAllowance::where('age_category_id',$row->id)->count()}}</i> <span>DietaryAllowances</span> </button>
+                                            </a>
                                         </td>
                                     @endif
                                     @if($class!="Nutrient" && $class!="ClinicalStatus" && $class!="RdaCategory")

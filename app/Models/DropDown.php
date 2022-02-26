@@ -29,4 +29,8 @@ class DropDown extends Model
     {
         return $this->hasMany(NutrientFactor::class,'drug_id','id');
     }
+    public function dietary_allowances():object
+    {
+        return $this->hasMany(DietaryAllowance::class,'age_category_id','id');
+    }
 }
